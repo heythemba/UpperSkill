@@ -1,7 +1,9 @@
 import { generateTokenAndSetCookie } from "../tools/Token.js";
 import User from "../models/user-model.js";
 import bcrypt from "bcryptjs";
-
+//user signup, this function retrieves the necessary user data from the request body, validates the input, 
+//checks for existing usernames and emails, hashes the password, creates a new User document, and saves it to the database,
+//if successful, it generates a JWT token, sets it as a cookie in the response, and sends the user's information as a response.
 export const signup = async (req, res) => {
 
 	try {
@@ -35,8 +37,6 @@ export const signup = async (req, res) => {
 			email,
 			password: hashedPassword,
 			is_student,
-            profileImg: "/images/default-profile.jpg",
-            coverImg: "/images/default-cover.jpg",
 		});
 
 		if (newUser) {
@@ -50,9 +50,8 @@ export const signup = async (req, res) => {
 				fullName: newUser.fullName,
 				username: newUser.username,
 				email: newUser.email,
-				is_student: 1,
+				is_student: newUser.is_student,
 				profileImg: newUser.profileImg,
-				coverImg: newUser.coverImg,
 			});
 		} else {
 			res.status(400).json({ error: "Invalid user data" });
@@ -62,7 +61,9 @@ export const signup = async (req, res) => {
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };
-
+//user login, this function retrieves the username and password from the request body, 
+//finds the user in the database, compares the hashed password, and generates a JWT token if the credentials are correct,
+//it then sets the JWT token as a cookie in the response and sends the user's information as a response.
 export const login = async (req, res) => {
 	try {
 		const { username, password } = req.body;
@@ -89,7 +90,8 @@ export const login = async (req, res) => {
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };
-
+//user logout, this functionhandles the user logout process,
+//it clears the JWT token from the cookie in the response and sends a success message.
 export const logout = async (req, res) => {
 	try {
 		res.cookie("jwt", "", { maxAge: 0 });
@@ -100,7 +102,8 @@ export const logout = async (req, res) => {
 	}
 };
 
-// Controller function to get the current user's information
+//this function retrieves the current user's information from the database based on the user ID stored in the request,
+//it selects the password field to exclude it from the response and sends the user's information as a response.
 export const getMe = async (req, res) => {
 	try {
 		const user = await User.findById(req.user._id).select("-password");
@@ -110,3 +113,4 @@ export const getMe = async (req, res) => {
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };
+
