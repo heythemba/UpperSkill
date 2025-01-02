@@ -22,18 +22,24 @@ const userSchema = new mongoose.Schema(
             unique: true,
         },
         is_student: {
-                type: Boolean,
-                required: true,
+            type: Boolean,
+            required: true,
         },
-        
+        quizz_taken: {
+            type: Boolean,
+            default: false
+        },
         profileImg: {
             type: String,
             default: "",
         },
-        coverImg: {
-            type: String,
-            default: "",
-        },
+
+        enrolled: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Course",
+			},
+		],
     },
     { timestamps: true }
 );
