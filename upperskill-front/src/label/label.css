@@ -1,0 +1,90 @@
+.label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: auto;
+        background-color: var(--success-100);
+        height: 38px;
+        border-radius: 20px;
+        transition: all 0.6s;
+        
+}
+
+.first-text {
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px 14px;
+        color: var(--success-900);
+        background-color: var(--success-200);
+        height: 38px;
+        border-radius: 20px;
+        font-family: var( --body-small-font-family);
+        font-size: var(--body-small-font-size); 
+        font-style: var(--body-small-font-style);
+        font-weight: var(--body-small-font-weight);
+        letter-spacing: var(--body-small-letter-spacing);
+        line-height: var(--body-small-line-height);
+        text-align: center;
+        width: fit-content;
+        
+}
+
+.expanded-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: visible;
+        position: absolute;
+        width: fit-content;
+        padding: 10px 14px;
+        opacity: 0;
+        transform: translateX(-20px);
+        height: 38px;
+        border-radius: 20px;
+        color: var(--background-color);
+        font-family: var( --body-small-font-family);
+        font-size: var(--body-small-font-size); 
+        font-style: var(--body-small-font-style);
+        font-weight: var(--body-small-font-weight);
+        letter-spacing: var(--body-small-letter-spacing);
+        line-height: var(--body-small-line-height);
+        text-align: center;
+       
+        
+        
+}
+
+.expanded-text:hover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: visible;
+        position: relative;
+        width: fit-content;
+        opacity: 1;
+        color: var(--success-900);
+        transition-timing-function: linear;
+        transform: translateX(0);
+        transition: all 0.6s;
+        
+}
+
+.label:hover{
+        transition-timing-function: linear;
+        width: fit-content;
+        cursor: pointer;
+        transition: all 0.6s;
+        
+}
+
+.first-text:hover{
+        transition-timing-function: linear;
+        transform: translateX(0%);
+        
+             
+}
+                

@@ -6,6 +6,8 @@
   *:before,
   *:after {
     box-sizing: border-box;
+    margin: 0px;
+    
   }
   
   html {
@@ -122,7 +124,7 @@
       --body-base-font-size: 16px;
       --body-base-font-style: normal;
       --body-base-font-weight: 400;
-      --body-base-letter-spacing: 00.4px;
+      --body-base-letter-spacing: 0.4px;
       --body-base-line-height: 150%;
   
       /* body bold text */
@@ -181,21 +183,21 @@
   
       /* title display text */
   
-      --title-display-font-family: var(--font-family-title);
-      --title-display-font-size: 72px;
-      --title-display-font-style: normal;
-      --title-display-font-weight: 700;
-      --title-display-letter-spacing: 0px;
-      --title-display-line-height: normal;
+      --titles-display-font-family: var(--font-family-title);
+      --titles-display-font-size: 72px;
+      --titles-display-font-style: normal;
+      --titles-display-font-weight: 700;
+      --titles-display-letter-spacing: 0px;
+      --titles-display-line-height: normal;
   
        /* Title display text */
   
-      --title-subtitle-font-family: var(--font-family-title);
-      --title-subtitle-font-size: 32px;
-      --title-subtitle-font-style: normal;
-      --title-subtitle-font-weight: 500;
-      --title-subtitle-letter-spacing: 0px;
-      --title-subtitle-line-height: 100%;
+      --titles-subtitle-font-family: var(--font-family-title);
+      --titles-subtitle-font-size: 32px;
+      --titles-subtitle-font-style: normal;
+      --titles-subtitle-font-weight: 500;
+      --titles-subtitle-letter-spacing: 0px;
+      --titles-subtitle-line-height: 100%;
   
         /* Title title text */
   
@@ -221,7 +223,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+.body{
+  display: flex;
+  justify-content: center;
+  width: 1440px;
+  min-width: fit-content;
+  background-color: var(--background-color);
+}
 
 
 

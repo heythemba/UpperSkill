@@ -1,0 +1,84 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Container */
+.nav-bar {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    min-width: min-content;
+    height: 100px;
+    min-height: fit-content;
+    padding: 16px 156px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    
+}
+
+/* Logo and Navigation Menu */
+.browse-grp {
+    display: flex;
+    align-items: center;
+    width: auto;
+    gap: 24px;
+    flex-wrap: wrap;
+    min-height: fit-content;
+}
+
+.browse-grp img {
+    height: 64px;
+    margin-right: 15px;
+}
+
+
+
+/* Call-to-Action Buttons */
+.cta-grp {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 24px;
+    width: auto;
+    flex-wrap: wrap;
+    min-height: fit-content;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    padding: 14;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .browse-grp img {
+        height: 30px;
+    }
+
+    .cta-grp {
+        gap: 10px;
+    }
+
+    .cta-grp .cta-button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}

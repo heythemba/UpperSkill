@@ -1,0 +1,25 @@
+.banner-obj {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color:transparent;
+        color: var(--background-color);
+        width: 110px;
+        align-items: center;
+        flex-shrink: 0;
+        align-self: stretch;
+        gap: 16px;
+        padding: 0px 14px;
+    }
+
+h2 {
+        color: var(--background-color);
+        font-family: var( --titles-subtitle-font-family);
+        font-size: var(--titles-subtitle-font-size); 
+        font-style: var(--titles-subtitle-font-style);
+        font-weight: var(--titles-subtitle-font-weight);
+        letter-spacing: var(--titles-subtitle-letter-spacing);
+        line-height: var(--titles-subtitle-line-height);
+        text-align: center;
+}

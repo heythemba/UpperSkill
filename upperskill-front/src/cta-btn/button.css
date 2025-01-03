@@ -1,0 +1,108 @@
+.cta-btn{
+    display: flex;
+    padding: 14px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+}
+
+.primary {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding: 14px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-500);
+    color: var(--background-color);
+    font-family: var( --body-bold-font-family);
+    font-size:var(--body-bold-font-size); 
+    font-style: var(--body-bold-font-style);
+    font-weight: var(--body-bold-font-weight);
+    letter-spacing: var(--body-bold-letter-spacing);
+    line-height: var(--body-bold-line-height);
+    border-radius: 10px;
+    border-color: var(--primary-500);
+    box-shadow:var(--drop-shadow-base);
+    transition: all 0.6s;
+    
+}
+.text{
+    min-width: none;
+    width: max-content;
+  
+}
+.icon-wrapper{
+    min-width: 32;
+    height: 32;
+}
+.primary:hover{
+    transition: transform 1.2s ease;
+    box-shadow: var(--drop-shadow-btn-hover);
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.secondary {
+
+    display: inline-flex;
+    padding: 14px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--secondary-500);
+    color: var(--primary-500);
+    font-family: var( --body-bold-font-family);
+    font-size:var(--body-bold-font-size); 
+    font-style: var(--body-bold-font-style);
+    font-weight: var(--body-bold-font-weight);
+    letter-spacing: var(--body-bold-letter-spacing);
+    line-height: var(--body-bold-line-height);
+    border-color: var(--secondary-500);
+    
+}
+
+
+.secondary:hover{
+    transition: transform 1.2s ease;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.20);
+    cursor: pointer;
+}
+
+
+.link {
+
+    display: flex;
+    padding: 14px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--accent-500);
+    font-family: var( --body-bold-font-family);
+    font-size:var(--body-bold-font-size); 
+    font-style: var(--body-bold-font-style);
+    font-weight: var(--body-bold-font-weight);
+    letter-spacing: var(--body-bold-letter-spacing);
+    line-height: var(--body-bold-line-height);
+    border-color: transparent;
+    gap: 14px;
+    
+    
+}
+
+.Light{
+    color: var(--accent-500);
+}
+
+.Dark{
+    color: var(--background-color);
+}
+
+.link:hover{
+    transition: transform 1.2s ease;
+    text-decoration: underline;
+    cursor: pointer;
+}
