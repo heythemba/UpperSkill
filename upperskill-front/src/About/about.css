@@ -1,0 +1,112 @@
+.about-us-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;    
+}
+.about-us {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 96px 156px;
+        gap: 48px;
+        min-height: fit-content;
+        background-color: var(--secondary-100);
+}
+
+.meet-the-team{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: stretch;
+        height: fit-content;
+        gap: 48px;
+        
+} 
+.team-members{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 112px;
+        height: fit-content;
+        width: fit-content;
+        flex-wrap: wrap;
+}
+
+.about-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        width: fit-content;
+        max-width: 1128px;
+}
+
+h3{
+color: var(--accent-400);
+}
+
+
+.team-desc {
+        color: var(--accent-500);
+        font-family: var( --body-base-font-family);
+        font-size:var(--body-base-font-size); 
+        font-style: var(--body-base-font-style);
+        font-weight: var(--body-base-font-weight);
+        letter-spacing: var(--body-base-letter-spacing);
+        line-height: var(--body-base-line-height);
+        margin: 0px;
+        text-align: center;
+}
+
+.heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        width: auto;
+}
+.heading h4{
+        color: var(--primary-500);
+        font-family: var( --headings-heading-font-family);
+        font-size:var(--headings-heading-font-size); 
+        font-style: var(--headings-heading-font-style);
+        font-weight: var(--headings-heading-font-weight);
+        letter-spacing: var(--headings-heading-letter-spacing);
+        line-height: var(--headings-heading-line-height);
+        margin: 0px;
+        text-align: center;   
+}
+
+.heading p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        color: var(--black-500);
+        font-family: var( --body-base-font-family);
+        font-size:var(--body-base-font-size); 
+        font-style: var(--body-base-font-style);
+        font-weight: var(--body-base-font-weight);
+        letter-spacing: var(--body-base-letter-spacing);
+        line-height: var(--body-base-line-height);
+        margin: 0px;
+        text-align: center;    
+}
+
+.get-started-section{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 96px 156px;
+        gap: 48px;
+}

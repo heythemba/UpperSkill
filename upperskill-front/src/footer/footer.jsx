@@ -27,6 +27,7 @@ const Footer = (
                         <div className='copyright'>
                                 <p>Copyright© {getFullYear()} UpperSkill</p>
                         </div>
+
                 </>
                         
                 )}

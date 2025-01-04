@@ -8,17 +8,18 @@ export const NavBar = ({
     isLogged = false
 }) => {
     return (
-        <div className="nav-bar">
+        <nav className="nav-bar">
+            
             {!isLogged && (
                 <>
                 
                     <div className="browse-grp">
                         <img src={logo}  alt="Logo" />
                         <CtaButton className="nav-btn" priority ="link" text="Home" theme="Light"
-                        onClick={()=> (console.log(`this is home button`))} />
+                        onClick={()=> (window.location = "/Home")} />
                         <CtaButton className="nav-btn" priority ="link" text="About Us" theme="Light"
                         onClick={()=> (console.log(`this is About US button`))} />
-                        <CtaButton className="nav-btn" priority ="link" text="FAQ" theme="Light"
+                        <CtaButton className="nav-btn" priority ="link" text="FAQs" theme="Light"
                         onClick={()=> (console.log(`this is FAQ button`))} />
                     </div>
                     <div className="cta-grp">
@@ -42,7 +43,7 @@ export const NavBar = ({
                     
                 </>
             )}
-        </div>
+        </nav>
     );
 };
 
