@@ -26,7 +26,9 @@ export const KeyValueSection = () => {
                         <KvpItem text='User-Freindly Design' icon={<UserFreindly />} description='Enjoy a sleek, intuitive interface crafted for your convenience.' />
                         </div>
                         </div>
-                        <CtaButton text="Get Started" priority="primary" theme="Dark" icon={<ArrowRight />} />
+                        <CtaButton text="Get Started" 
+                        onClick={() => (window.location.pathname = '/Sign-Up')}
+                        priority="primary" theme="Dark" icon={<ArrowRight />} />
                 </div>
                 </>
         )

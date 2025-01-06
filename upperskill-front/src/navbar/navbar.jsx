@@ -2,10 +2,15 @@ import PropTypes from "prop-types";
 import "./navbar.css";
 import logo from "../assets/logo192.png";
 import { Avatar } from "../icons/avatar.jsx";
-import CtaButton from "../cta-btn/button";
+import CtaButton from "../cta-btn/button.jsx";
+import {UserAccount} from "../icons/UserAccount.jsx";
+import { Link } from "react-router-dom";
+
 
 export const NavBar = ({
-    isLogged = false
+    isLogged = false,
+    UserIcon = <UserAccount />,
+    UserName = "Haythem"
 }) => {
     return (
         <nav className="nav-bar">
@@ -14,30 +19,33 @@ export const NavBar = ({
                 <>
                 
                     <div className="browse-grp">
-                        <img src={logo}  alt="Logo" />
+                        <Link to="/Home">
+                        <img  src={logo}  alt="Logo" />
+                        </Link>
                         <CtaButton className="nav-btn" priority ="link" text="Home" theme="Light"
                         onClick={()=> (window.location = "/Home")} />
                         <CtaButton className="nav-btn" priority ="link" text="About Us" theme="Light"
-                        onClick={()=> (console.log(`this is About US button`))} />
+                        onClick={()=> (window.location = "/About")} />
                         <CtaButton className="nav-btn" priority ="link" text="FAQs" theme="Light"
-                        onClick={()=> (console.log(`this is FAQ button`))} />
+                        onClick={()=> (window.location = "/FAQs")} />
                     </div>
                     <div className="cta-grp">
                           
                         <CtaButton className="nav-btn" priority ="link" text="Log-in" theme="Light" icon={<Avatar />} 
-                        onClick={()=> (console.log(`this is login button`))} />
+                        onClick={()=> (window.location = "/Login")} />
                         
                         
                         <CtaButton className="cta-btn" priority ="primary" text="Get Started For Free" theme="Dark"
-                        onClick={()=> (console.log(`this is getting started button`))} />
+                        onClick={()=> (window.location = "/Sign-Up")} />
                     </div>
                 </>
             )}
 
             {isLogged && (
                 <>
-                    <div className="text-wrapper-2">
-                        <h4>Haythem</h4>
+                    <div className="logged-navbar">
+                        <h6>{UserName}</h6>
+                        <div className="avatar">{UserIcon}</div>
                     </div>
 
                     
@@ -48,5 +56,7 @@ export const NavBar = ({
 };
 
 NavBar.propTypes = {
-    isLogged: PropTypes.bool
+    isLogged: PropTypes.bool,
+    UserIcon: PropTypes.node,
+    UserName: PropTypes.string,
 };

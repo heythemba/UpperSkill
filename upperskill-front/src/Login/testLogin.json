@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "225",
+      "email": "user1@email.com",
+      "password": "testpass123"
+    },
+    {
+      "id": "226",
+      "email": "user2@email.com",
+      "password": "password456"
+    },
+    {
+      "id": "227",
+      "email": "user3@email.com",
+      "password": "mypassword789"
+    },
+    {
+      "id": "320",
+      "email": "heythem.94@gmail.com",
+      "password": "alxpass123"
+    }
+  ]
+}

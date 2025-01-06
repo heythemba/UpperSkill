@@ -26,6 +26,7 @@
         flex-direction: row;
         justify-content: flex-start;
         width: auto;
+        transition: all 0.8s;
 }
 
 .footer-link {
@@ -65,4 +66,10 @@
         width: 100%;
         background-color: var(--background-color);
         margin-top: 16px;
+}
+
+.footer-logo:hover{
+        cursor: pointer;
+        scale: 1.1;
+        transition: all 0.8s;
 }

@@ -13,6 +13,10 @@ import CtaButton from '../cta-btn/button.jsx';
 import './HomePage.css';
 
 const HomePage = () => {
+
+
+        
+
         return(
         <>
         {/* Landing section */}
@@ -27,8 +31,8 @@ const HomePage = () => {
                 </div>
                         {/* Call To Action section */}
                         <div className="cta-landing">
-                        <CtaButton priority="primary" text="Get Started For Free" theme="Dark" onClick={() => (console.log("get satrted main cta"))} />
-                        <CtaButton priority="link" text="Learn more" onClick={() => (console.log("learn more"))}/>
+                        <CtaButton priority="primary" text="Get Started For Free" theme="Dark" onClick={() => (window.location.pathname = '/Sign-Up')} />
+                        <CtaButton priority="link" text="Learn more" onClick={() => (window.location.pathname = '/About')}/>
                 </div>
         </div>
         <div className="banner">
@@ -48,7 +52,7 @@ const HomePage = () => {
                         <MvpFeature isSwapped = {true} title='Take you first quiz' illust={<TakeQuiz />} description='Start your journey by creating a secure account. Once registered, take an engaging quiz designed to evaluate your current skill level and set the foundation for a tailored learning experience.' />
                         <MvpFeature isSwapped = {false} title='Take you first quiz' illust={<Progress />} description='Start your journey by creating a secure account. Once registered, take an engaging quiz designed to evaluate your current skill level and set the foundation for a tailored learning experience.' />
                 </div>
-                <CtaButton priority="primary"  theme="Dark" text="Get Started For Free" onClick={() => (console.log("get satrted for free") )} icon={<ArrowRight />}/>
+                <CtaButton priority="primary"  theme="Dark" text="Get Started For Free" onClick={() => (window.location.pathname = '/Sign-Up')} icon={<ArrowRight />}/>
         </div>
         <KeyValueSection />
         </>
