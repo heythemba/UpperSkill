@@ -21,7 +21,7 @@ const Label = ({
 
 Label.propTypes = {
   text: PropTypes.string.isRequired, // Main label text
-  expandedText: PropTypes.string.isRequired, // Expanded text shown on hover
+  expandedText: PropTypes.string, // Expanded text shown on hover
 };
 
 export default Label;

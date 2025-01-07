@@ -49,3 +49,104 @@
         gap: 16px;
         padding: 16px;
 }
+
+
+
+/* Styling for questions list render */
+
+.question-list-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        gap: 16px;
+        width: 100%;
+        height: 100%;
+        max-height: calc(86vh - 100px);
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+       
+}
+.question-list{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: fit-content;
+        width: 100%;
+        padding: 16px;
+        gap: 16px;
+}
+      .question-list h4 {
+        color: var(--primary-500);
+        font-family: var(--headings-heading-font-family);
+        font-size: var(--headings-heading-font-size);
+        font-style: var(--headings-heading-font-style);
+        font-weight: var(--headings-heading-font-weight);
+        letter-spacing: var(--headings-heading-letter-spacing);
+        line-height: var(--headings-heading-line-height);
+        margin: 0px;
+        text-align: left;
+        padding-left: 16px;
+      }
+
+.question-list p {
+        color: var(--black-500);
+        font-family: var(--body-bold-font-family);
+        font-size: var(--body-bold-font-size);
+        font-style: var(--body-bold-font-style);
+        font-weight: var(--body-bold-font-weight);
+        letter-spacing: var(--body-bold-letter-spacing);
+        line-height: var(--body-bold-line-height);
+        margin: 0px;
+        text-align: left;
+        padding-left: 32px;
+      }
+      
+.list-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        padding: 8px 16px;
+        color: var(--black-500);
+        font-family: var(--body-bold-font-family);
+        font-size: var(--body-bold-font-size);
+        font-style: var(--body-bold-font-style);
+        font-weight: var(--body-bold-font-weight);
+        letter-spacing: var(--body-bold-letter-spacing);
+        line-height: var(--body-bold-line-height);
+        gap: 16px;
+      }
+
+input[type="radio"] {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+
+      }
+
+
+
+.submit-question{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 48px;
+        width: 100%;
+        height: fit-content;
+}
+
+.quiz-taken {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+}
