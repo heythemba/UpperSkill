@@ -5,7 +5,9 @@ import Footer from './footer/footer.jsx';
 //import AboutUs from './About/about.jsx';
 //import LoginForm from './Login/LoginForm.jsx';
 //import { Routes, Route } from 'react-router-dom';
-import Dashboard from './Dasboard/Dashboard.jsx';
+//import WebApp from './WebApp/WebApp.jsx';
+//import NotFoundPage from './404/404.jsx';
+import WebApp from './WebApp/WebApp.jsx';
 
 const  App = () => {
 
@@ -19,7 +21,7 @@ const  App = () => {
           <Route path="/About" element={<AboutUs />} />
           <Route path="/Login" element={<LoginForm />} />
           <Route path="/Sign-Up" element={<LoginForm formType={true}/>} />
-          <Route path="*" element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
       <Footer isLogged={false}/>
@@ -30,7 +32,7 @@ const  App = () => {
     return (
       <div className="App">
       <NavBar isLogged={true}/>
-        <Dashboard />
+        <WebApp />
         <Footer isLogged={true}/>
         </div>
     )

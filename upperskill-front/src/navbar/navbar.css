@@ -5,10 +5,9 @@
     width: 100%;
     flex-wrap: wrap;
     min-width: min-content;
-    height: 100px;
-    min-height: fit-content;
+    height: fit-content;
     max-height: 250px;
-    padding: 16px 156px;
+    padding: 8px 156px;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color);
@@ -75,10 +74,16 @@
     align-items: center;
     width: 100%;
     padding-left: 120px;
-    background-color: var(--background-color);
+    background-color: transparent;
     gap: 16px;
 }
-
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
 .logged-navbar h6{
     color: var(--primary-500);
     font-family: var( --body-bold-font-family);

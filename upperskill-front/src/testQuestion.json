@@ -1,0 +1,117 @@
+{
+  "role": "assistant",
+  "content": {
+    "questions": [
+      {
+        "topic": "Web Development",
+        "question": "What does HTML stand for?",
+        "choices": [
+          "HyperText Markup Language",
+          "HighText Machine Language",
+          "Hyperlink and Text Markup Language",
+          "Home Tool Markup Language"
+        ],
+        "correct_answer": "HyperText Markup Language"
+      },
+      {
+        "topic": "Data Science and AI",
+        "question": "Which library is commonly used for data analysis in Python?",
+        "choices": [
+          "TensorFlow",
+          "NumPy",
+          "Pandas",
+          "Matplotlib"
+        ],
+        "correct_answer": "Pandas"
+      },
+      {
+        "topic": "Cybersecurity",
+        "question": "What is the primary purpose of a firewall?",
+        "choices": [
+          "Encrypt data",
+          "Monitor network traffic",
+          "Block unauthorized access",
+          "Perform penetration testing"
+        ],
+        "correct_answer": "Block unauthorized access"
+      },
+      {
+        "topic": "Cloud Computing",
+        "question": "Which of these is a popular cloud service provider?",
+        "choices": [
+          "AWS",
+          "Oracle",
+          "MongoDB",
+          "Apache"
+        ],
+        "correct_answer": "AWS"
+      },
+      {
+        "topic": "Leadership and Strategy",
+        "question": "What is a key characteristic of an effective leader?",
+        "choices": [
+          "Micromanaging",
+          "Active listening",
+          "Avoiding feedback",
+          "Rigid decision-making"
+        ],
+        "correct_answer": "Active listening"
+      },
+      {
+        "topic": "Project Management",
+        "question": "What does 'Agile' in project management emphasize?",
+        "choices": [
+          "Fixed timelines",
+          "Flexibility and collaboration",
+          "Extensive documentation",
+          "Rigid processes"
+        ],
+        "correct_answer": "Flexibility and collaboration"
+      },
+      {
+        "topic": "Graphic Design",
+        "question": "Which software is commonly used for vector graphics?",
+        "choices": [
+          "Photoshop",
+          "Illustrator",
+          "InDesign",
+          "Lightroom"
+        ],
+        "correct_answer": "Illustrator"
+      },
+      {
+        "topic": "Public Speaking",
+        "question": "Which is the most effective way to overcome public speaking anxiety?",
+        "choices": [
+          "Avoid speaking opportunities",
+          "Practice in front of a mirror",
+          "Focus on audience reactions",
+          "Prepare thoroughly and rehearse"
+        ],
+        "correct_answer": "Prepare thoroughly and rehearse"
+      },
+      {
+        "topic": "Personal Growth",
+        "question": "What is the first step in setting effective goals?",
+        "choices": [
+          "Identifying obstacles",
+          "Defining specific objectives",
+          "Starting multiple tasks simultaneously",
+          "Avoiding feedback from others"
+        ],
+        "correct_answer": "Defining specific objectives"
+      },
+      {
+        "topic": "Mathematics",
+        "question": "What is the derivative of x^2?",
+        "choices": [
+          "2x",
+          "x^2",
+          "x",
+          "2"
+        ],
+        "correct_answer": "2x"
+      }
+    ]
+  }
+}
