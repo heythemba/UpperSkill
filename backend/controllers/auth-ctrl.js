@@ -61,17 +61,17 @@ export const signup = async (req, res) => {
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };
-//user login, this function retrieves the username and password from the request body, 
+//user login, this function retrieves the email and password from the request body, 
 //finds the user in the database, compares the hashed password, and generates a JWT token if the credentials are correct,
 //it then sets the JWT token as a cookie in the response and sends the user's information as a response.
 export const login = async (req, res) => {
 	try {
-		const { username, password } = req.body;
-		const user = await User.findOne({ username });
+		const { email, password } = req.body;
+		const user = await User.findOne({ email });
 		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
 		if (!user || !isPasswordCorrect) {
-			return res.status(400).json({ error: "Invalid username or password" });
+			return res.status(400).json({ error: "Invalid email or password" });
 		}
 
 		generateTokenAndSetCookie(user._id, res);
