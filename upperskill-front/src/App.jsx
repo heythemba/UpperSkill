@@ -12,6 +12,8 @@ import { useEffect, useState } from 'react';
 const isLogged = false;
 
 const  App = () => {
+
+  // this is a state to set path to dashboard if user is logged in
   const [sessionType, setSession] = useState(isLogged);
 
   useEffect(() => {

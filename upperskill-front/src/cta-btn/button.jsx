@@ -1,5 +1,4 @@
 import './button.css';
-
 import PropTypes from "prop-types";
 
 const CtaButton = ({ 
@@ -13,7 +12,7 @@ const CtaButton = ({
 
     return (
     <>
-     <div className='ctn-btn'>
+     <div className='cta-btn'>
         <button className={priority}
         onClick={onClick} icon={icon}>
         <span className={theme} > {text}</span>{icon && <span className="icon-wrapper">{icon}</span>}

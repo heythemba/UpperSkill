@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 .env
-requestQuestio.mjs
+src/requestQuestions.mjs
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

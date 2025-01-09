@@ -14,9 +14,6 @@ import './HomePage.css';
 
 const HomePage = () => {
 
-
-        
-
         return(
         <>
         {/* Landing section */}
@@ -49,10 +46,10 @@ const HomePage = () => {
                 </div>
                         <div className="mvp-container">
                         <MvpFeature isSwapped = {false} title='Take you first quiz' illust={<LoginSecreen />} description='Start your journey by creating a secure account. Once registered, take an engaging quiz designed to evaluate your current skill level and set the foundation for a tailored learning experience.' />
-                        <MvpFeature isSwapped = {true} title='Take you first quiz' illust={<TakeQuiz />} description='Start your journey by creating a secure account. Once registered, take an engaging quiz designed to evaluate your current skill level and set the foundation for a tailored learning experience.' />
-                        <MvpFeature isSwapped = {false} title='Take you first quiz' illust={<Progress />} description='Start your journey by creating a secure account. Once registered, take an engaging quiz designed to evaluate your current skill level and set the foundation for a tailored learning experience.' />
+                        <MvpFeature isSwapped = {true} title='Get AI-Driven Recommendations' illust={<TakeQuiz />} description='Our intelligent AI analyzes your quiz results to identify gaps in your knowledge. It then recommends a curated list of courses to help you achieve your learning goals effectively and efficiently.' />
+                        <MvpFeature isSwapped = {false} title='Track Your Progress' illust={<Progress />} description='Access a dynamic dashboard that visualizes your progress, highlights your achievements, and keeps you motivated. Stay on track and celebrate every milestone on your way to mastery.' />
                 </div>
-                <CtaButton priority="primary"  theme="Dark" text="Get Started For Free" onClick={() => (window.location.pathname = '/Sign-Up')} icon={<ArrowRight />}/>
+                <CtaButton priority="primary"  theme="Dark" text="Start Your Journey For Free" onClick={() => (window.location.pathname = '/Sign-Up')} icon={<ArrowRight />}/>
         </div>
         <KeyValueSection />
         </>
