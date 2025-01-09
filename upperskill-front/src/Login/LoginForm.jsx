@@ -59,6 +59,7 @@ const LoginForm = (
     }else {
       setSuccess('Account created successfully!');
       // redirect to dashboard
+      window.location.pathname = '/Dashboard/Dash';
     }
    };
 
@@ -98,6 +99,7 @@ const LoginForm = (
         {success && <p className="success-message">{success}</p>} 
 
         <button type="submit" className="submit-button" 
+        onClick={() => (window.location.pathname = '/Dashboard/Dash')}
         > 
           Login <span className='arrow-icon'>{<ArrowRight />}</span></button>
 
@@ -155,7 +157,7 @@ const LoginForm = (
         {success && <p className="success-message">{success}</p>} 
 
         <button type="submit" className="submit-button"
-       
+        
         > 
         Sign-Up <span>{<ArrowRight />}</span></button>
 

@@ -25,12 +25,12 @@
         justify-content: flex-start;
         align-items: center;
         padding: 132px 0px ;
-        height: 844px;
+        height: 90vh;
         min-height: fit-content;
         gap: 24px;
         background-image: url("../assets/background-illustration.svg");
         background-repeat: no-repeat;
-        background-position: center calc(50% - 48px); /* Adjust vertical position */
+        background-position: center calc(50% - 46px); /* Adjust vertical position */
        
       }
       
