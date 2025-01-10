@@ -1,11 +1,11 @@
 import './sideMenu.css';
-import logo from "../assets/white-logo192.png";
+import logo from "../../assets/white-logo192.png";
 import { useState } from 'react';
-import {DashboardIcon} from '../icons/DashboardIcon.jsx';
-import {CoursesIcon} from '../icons/CoursesIcon.jsx';
-import {SettingIcon} from '../icons/SettingIcon.jsx';
-import {FaqIcon} from '../icons/FaqIcon.jsx';
-import {LogoutIcon} from '../icons/LogoutIcon.jsx';
+import {DashboardIcon} from '../../icons/DashboardIcon.jsx';
+import {CoursesIcon} from '../../icons/CoursesIcon.jsx';
+import {SettingIcon} from '../../icons/SettingIcon.jsx';
+import {FaqIcon} from '../../icons/FaqIcon.jsx';
+import {LogoutIcon} from '../../icons/LogoutIcon.jsx';
 
 
 const SideMenu = () => {

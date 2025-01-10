@@ -4,18 +4,24 @@ import CoursesCard from '../courses/CoursesCard.jsx';
 import CtaButton from '../../cta-btn/button.jsx';
 import Loader from './Loader.jsx';
 import './Dashboard.css';
+import PropTypes from 'prop-types'
 
-const Dashboard = () => {
 
+
+const Dashboard = ({
+  quizTaken = false,
+}) => {
+  // State for storing questions data
   const [questionsData, setQuestionsData] = useState(null);
+  //state to store user answers
   const [userAnswers, setUserAnswers] = useState([]);
 
+    // Fetch questions from OpenAI API
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const completion = await openai.chat.completions.create({
           model: "gpt-4o-mini",
-       
           messages: [
             { role: "system", content: "You are a Teacher." },
             {
@@ -29,6 +35,7 @@ const Dashboard = () => {
               },`
             },
           ],
+          max_tokens: 1000,
           
         });
 
@@ -61,8 +68,8 @@ const Dashboard = () => {
     newAnswers[index] = choice;
     setUserAnswers(newAnswers);
   };
-  // State to track if the quiz has been taken
-  const [userDidQuiz, setQuizTaken] = useState(false);
+  // State to switch between quiz taken or not.
+  const [userDidQuiz, setQuizTaken] = useState(quizTaken);
 
   useEffect(() => {
         if (userDidQuiz) {
@@ -86,7 +93,7 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard-body'>
-      {userDidQuiz ? (
+      {userDidQuiz && quizTaken ? (
         <div className="quiz-taken">
           <CoursesCard />
         </div>
@@ -124,6 +131,8 @@ const Dashboard = () => {
   );
 };
 
-
+Dashboard.propTypes = {
+  quizTaken: PropTypes.bool
+};
 
 export default Dashboard;
