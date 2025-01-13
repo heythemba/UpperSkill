@@ -103,8 +103,8 @@
 }
 
 .cta-btn .link:hover{
-    transition: transform 1.2s ease;
-    text-decoration: underline;
+    transition: all 1.2s ease;
+    text-decoration: 2px    underline;
     color: var(--accent-500);
     cursor: pointer;
 }

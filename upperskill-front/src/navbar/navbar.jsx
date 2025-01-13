@@ -18,16 +18,17 @@ export const NavBar = ({
             {!isLogged && (
                 <>
                 
-                    <div className="browse-grp">
+                    <div className="home-grp">
                         <Link to="/Home">
                         <img  src={logo}  alt="Logo" />
                         </Link>
-                        <CtaButton className="nav-btn" priority ="link" text="Home" theme="Light"
-                        onClick={()=> (window.location = "/Home")} />
-                        <CtaButton className="nav-btn" priority ="link" text="About Us" theme="Light"
-                        onClick={()=> (window.location = "/About")} />
-                        <CtaButton className="nav-btn" priority ="link" text="FAQs" theme="Light"
-                        onClick={()=> (window.location = "/FAQs")} />
+                    <div className="nav-links">
+                        <Link className='nav-link' to='/Home'>Home</Link>
+                        <Link className='nav-link' to='/About'>About Us</Link>
+                        <Link className='nav-link' to='/Contact'>Contact Us</Link>
+                        <Link className='nav-link' to='/FAQ'>FAQs</Link>
+                        <Link className='nav-link' to='/Privacy'>Privacy Policy</Link>
+                    </div>
                     </div>
                     <div className="cta-grp">
                           

@@ -20,6 +20,7 @@ const LoginForm = (
   const [err, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  
   // switch between login and sign-up form
   const [isFormType, setFormType] = useState(formType);
 
