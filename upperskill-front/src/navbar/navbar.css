@@ -1,4 +1,3 @@
-
 /* Navbar Container */
 .nav-bar {
     display: flex;
@@ -11,7 +10,10 @@
     max-height: 250px;
     padding: 8px 156px;
     background-color: var(--background-color);
-    
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 100; 
 }
 
 /* Logo and Navigation Menu */
@@ -21,9 +23,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: 24px;
     flex-wrap: wrap;
     min-height: fit-content;
+    gap: 64px; /* Increased gap */
+    flex-wrap: nowrap; /* Ensure no wrapping */
 }
 
 .home-grp img {
@@ -52,12 +55,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-family: var(--body-bold-font-family);
-    font-size: var(--body-bold-font-size);
-    font-style: var(--body-bold-font-style);
-    font-weight: var(--body-bold-font-weight);
-    line-height: var(--body-bold-line-height);
+    font-family: var(--body-base-font-family);
+    font-size: var(--body-base-font-size);
+    font-style: var(--body-base-font-style);
+    font-weight: var(--body-base-font-weight);
+    line-height: var(--body-basebase-line-height);
     color: var(--accent-500);
+    gap: 16px;
     text-decoration: none;
 }
 

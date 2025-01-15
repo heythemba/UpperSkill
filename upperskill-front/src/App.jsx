@@ -3,11 +3,12 @@ import { NavBar } from './navbar/navbar.jsx';
 import Footer from './footer/footer.jsx';
 import HomePage from './Home/HomePage.jsx';
 import AboutUs from './About/about.jsx';
-import LoginForm from './Login/LoginForm.jsx';
 import { Routes, Route } from 'react-router-dom';
 import NotFoundPage from './404/404.jsx';
 import WebApp from './WebApp/WebApp.jsx'
 import { useEffect, useState } from 'react';
+import Login from './Login/Login.jsx';
+import Signup from './Login/Signup.jsx';
 
 const isLogged = false;
 
@@ -34,8 +35,10 @@ const  App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/Home" element={<HomePage />} />
           <Route path="/About" element={<AboutUs />} />
-          <Route path="/Login" element={<LoginForm />} />
-          <Route path="/Sign-Up" element={<LoginForm formType={true}/>} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Log-in" element={<Login />} />
+          <Route path="/Sign-Up" element={<Signup/>} />
+          <Route path="/SignUp" element={<Signup/>} />
           <Route path='/Dashboard/*' element={<WebApp />}/>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

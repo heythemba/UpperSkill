@@ -3,7 +3,17 @@ import './about.css';
 import TeamMember from './Team-member';
 import { ArrowRight } from '../icons/Arrow-right.jsx';
 
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
 const AboutUS = () => {
+        // Import the useLocation Module 
+        const scrollPosition = useLocation();
+        //reset scroll position
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [scrollPosition]);
+
     return (
         <div className='about-us-container'>
         <div className="about-us">

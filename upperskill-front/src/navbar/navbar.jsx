@@ -3,13 +3,12 @@ import "./navbar.css";
 import logo from "../assets/logo192.png";
 import { Avatar } from "../icons/avatar.jsx";
 import CtaButton from "../cta-btn/button.jsx";
-import {UserAccount} from "../icons/UserAccount.jsx";
 import { Link } from "react-router-dom";
 
 
 export const NavBar = ({
     isLogged = false,
-    UserIcon = <UserAccount />,
+    UserIcon ,
     UserName = "Haythem"
 }) => {
     return (
@@ -32,8 +31,7 @@ export const NavBar = ({
                     </div>
                     <div className="cta-grp">
                           
-                        <CtaButton className="nav-btn" priority ="link" text="Log-in" theme="Light" icon={<Avatar />} 
-                        onClick={()=> (window.location = "/Login")} />
+                        <Link className="nav-link" to='/Login'>Login {<Avatar />}</Link>
                         
                         
                         <CtaButton className="cta-btn" priority ="primary" text="Get Started For Free" theme="Dark"

@@ -11,9 +11,15 @@ import { KeyValueSection } from '../kvp/kvp.jsx';
 import { BannerObj } from '../banner/BannerObj.jsx';
 import CtaButton from '../cta-btn/button.jsx';
 import './HomePage.css';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const HomePage = () => {
+        const scrollPosition = useLocation();
 
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [scrollPosition]);
         return(
         <>
         {/* Landing section */}
