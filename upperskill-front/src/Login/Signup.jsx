@@ -1,40 +1,25 @@
 import "./LoginForm.css";
-import { useState } from "react";
 import { ArrowRight } from "../icons/Arrow-right";
 import { Link } from "react-router-dom";
-import usersData from './testLogin.json'
+import { useForm } from "react-hook-form";
 
 
 const Signup = () => {
 
-        // State for form inputs
-        const [email, setEmail] = useState('');
-        const [password, setPassword] = useState('');
-        const [confirmPassword, setConfirmPassword] = useState('');
-        
-        // State for form submission result
-        const [err, setError] = useState('');
-        const [success, setSuccess] = useState('');
-        
-        
-
-          // Handle signup form submission
-            const handleSignUpSubmit = (e) => {
-             e.preventDefault();
-           
-             // Checking if the email already exists
-             const user = usersData.users.find(user => user.email === email);
-             if (user) {
-               setError('Email already exists.');
-             }else if (password !== confirmPassword){ 
-               setError('Password do not match');
-               // redirect to dashboard
-             }else {
-               setSuccess('Account created successfully!');
-               // redirect to dashboard
-               window.location.pathname = '/Dashboard/Dash';
-             }
-            };
+  // this is a predefined function from react-hook-form that is used to handle form submission
+  // it returns an object with properties that we can use to register our form inputs
+  const { register,
+          handleSubmit,
+          getValues,
+          formState: { errors, isSubmitting}
+          } = useForm();
+         // this function is called when the form is submitted
+          const onSubmit = async (data) => {
+            //replace the resolve function with a request to the server and remove the console.log
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            console.log(data);
+            
+          }
 
         return(
                 // Sign-up form
@@ -42,17 +27,54 @@ const Signup = () => {
                  <div className='login-form-wrapper'>
                     <div className="form-container">
                       <h4 className="login-form-title">Create new account</h4>
-                      <form className="login-form" onSubmit={handleSignUpSubmit}>
+                      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+
+                      <div className="input-field">
+                          <label htmlFor="fullName">Full Name:</label>
+                          <input
+                            type="fullname"
+                            id="fullname"
+                            placeholder="Full Name"
+                            {...register('fullName',
+                              { required: 'Full Name is required', 
+                                pattern: /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/
+                              }
+                            )}
+                          />
+                          {errors.fullName && <span className="error-message">{errors.fullName.message}</span> }
+                          {errors.fullName && errors.fullName.type === 'pattern' && <span className="error-message">Invalid name</span> }
+                        </div>
+
                         <div className="input-field">
                           <label htmlFor="email">Email:</label>
                           <input
                             type="email"
                             id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
                             placeholder="Email"
-                            required
+                            {...register('email',
+                              { required: 'Email is required', 
+                                pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/ 
+                              }
+                            )}
                           />
+                          {errors.email && <span className="error-message">{errors.email.message}</span> }
+                          {errors.email && errors.email.type === 'pattern' && <span className="error-message">Invalid email address</span> }
+                        </div>
+
+                        <div className="input-field">
+                          <label htmlFor="username">Username :</label>
+                          <input
+                            type="username"
+                            id="username"
+                            placeholder="Username"
+                            {...register('userName',
+                              { required: 'User Name is required', 
+                                pattern: /^[a-z0-9._]+$/
+                              }
+                            )}
+                          />
+                          {errors.userName && <span className="error-message">{errors.userName.message}</span> }
+                          {errors.userName && errors.userName.type === 'pattern' && <span className="error-message">Invalid user name</span> }
                         </div>
                 
                         <div className="input-field">
@@ -60,30 +82,37 @@ const Signup = () => {
                           <input
                             type="password"
                             id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
                             placeholder="Password"
-                            required
+                            {...register('password',
+                              { required: 'Password is required', 
+                                minLength: 6,
+                                maxLength: 20
+                              }
+                            )}
                           />
+                          {errors.password && <span className="error-message">{errors.password.message}</span> }
+                          {errors.password && errors.password.type === 'minLength' && <span className="error-message">Password must be at least 6 characters</span> }
                         </div>
                 
                         <div className="input-field">
-                          <label htmlFor="password">Confirm Password:</label>
+                          <label htmlFor="confirmPassword">Confirm Password:</label>
                           <input
-                            type="password"
+                            type="Password"
                             id="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
                             placeholder="Confirm Password"
-                            required
+                            {...register('confirmPassword',
+                              { required: 'Confirm password is required', 
+                                validate: value => value === getValues('password')  || "Passwords do not match",
+                                minLength: 6,
+                                maxLength: 20
+                              }
+                            )}
                           />
+                          {errors.confirmPassword && <span className="error-message">{errors.confirmPassword.message}</span> }
+                          {errors.confirmPassword && errors.confirmPassword.type === 'minLength' && <span className="error-message">Password must be at least 6 characters</span> }
                         </div>
-                
-                        {err && <p className="error-message">{err}</p>}
-                        {success && <p className="success-message">{success}</p>} 
-                
-                        <button type="submit" className="submit-button"
-                        onSubmit={() => (console.log(handleSignUpSubmit))}
+                        
+                        <button type="submit" className="submit-button" disabled={isSubmitting}
                         > 
                         Sign-Up <span>{<ArrowRight />}</span></button>
                 

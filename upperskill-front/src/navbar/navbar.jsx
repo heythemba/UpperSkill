@@ -24,7 +24,6 @@ export const NavBar = ({
                     <div className="nav-links">
                         <Link className='nav-link' to='/Home'>Home</Link>
                         <Link className='nav-link' to='/About'>About Us</Link>
-                        <Link className='nav-link' to='/Contact'>Contact Us</Link>
                         <Link className='nav-link' to='/FAQ'>FAQs</Link>
                         <Link className='nav-link' to='/Privacy'>Privacy Policy</Link>
                     </div>
