@@ -46,6 +46,7 @@
         font-style: var(--body-bold-font-style);
         font-weight: var(--body-bold-font-weight);
         line-height: var(--body-bold-line-height);
+        letter-spacing: var(--body-bold-letter-spacing);
         color: var(--background-color);
         text-decoration: none;
 }

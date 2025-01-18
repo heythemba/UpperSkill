@@ -9,6 +9,7 @@ import WebApp from './WebApp/WebApp.jsx'
 import { useEffect, useState } from 'react';
 import Login from './Login/Login.jsx';
 import Signup from './Login/Signup.jsx';
+import FAQs from './FAQs/FAQs.jsx';
 
 const isLogged = false;
 
@@ -40,6 +41,7 @@ const  App = () => {
           <Route path="/Sign-Up" element={<Signup/>} />
           <Route path="/SignUp" element={<Signup/>} />
           <Route path='/Dashboard/*' element={<WebApp />}/>
+          <Route path='/FAQs' element={<FAQs />}/>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 

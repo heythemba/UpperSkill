@@ -1,0 +1,81 @@
+{
+  "GeneralQuestions": [
+    {
+      "question": "What is UpperSkill?",
+      "answer": "UpperSkill is an AI-powered educational platform that helps users identify their current skill levels, provides personalized course recommendations, and tracks their learning progress. It’s designed to empower individuals to achieve mastery in their chosen fields."
+    },
+    {
+      "question": "Who can use UpperSkill?",
+      "answer": "UpperSkill is for anyone looking to enhance their skills, whether they are students, professionals, or hobbyists. No matter your expertise level, UpperSkill can guide your learning journey."
+    },
+    {
+      "question": "How is UpperSkill different from other platforms?",
+      "answer": "Unlike traditional learning platforms, UpperSkill uses AI to assess your skill level and provide personalized recommendations tailored to your unique learning needs. It’s like having a personal mentor guiding you."
+    },
+    {
+      "question": "Is UpperSkill free to use?",
+      "answer": "UpperSkill offers both free and premium plans. The free plan includes basic features, while the premium plan unlocks advanced analytics, unlimited course recommendations, and other exclusive features."
+    }
+  ],
+  "AccountAndQuizRelatedQuestions": [
+    {
+      "question": "How do I create an account?",
+      "answer": "Simply click on the 'Sign Up' button on the homepage and fill in your details. Once your account is created, you can start your learning journey right away."
+    },
+    {
+      "question": "What happens during the quiz phase?",
+      "answer": "The quiz is designed to assess your current knowledge and skill level. It consists of multiple-choice questions tailored to the field you’re interested in. Your answers help our AI create a personalized learning path for you."
+    },
+    {
+      "question": "Can I retake the quiz?",
+      "answer": "Yes, you can retake the quiz at any time to update your skill level and get new recommendations."
+    },
+    {
+      "question": "What information is required to create an account?",
+      "answer": "We only ask for essential information like your name, email address, and password to ensure a secure and personalized experience."
+    }
+  ],
+  "CoursesAndLearningPath": [
+    {
+      "question": "What types of courses are available on UpperSkill?",
+      "answer": "UpperSkill offers courses across various domains, including technology, design, marketing, and more. New courses are regularly added to keep up with industry trends."
+    },
+    {
+      "question": "Are the courses on UpperSkill created by experts?",
+      "answer": "Yes, all courses are curated by industry professionals and subject matter experts to ensure high-quality learning material."
+    },
+    {
+      "question": "Can I access my learning progress?",
+      "answer": "Absolutely! Your personalized dashboard tracks your progress, completed courses, and achievements in real time."
+    },
+    {
+      "question": "What happens if I complete all recommended courses?",
+      "answer": "Upon completion, you can explore advanced courses or take another quiz to further refine your skills and continue learning."
+    }
+  ],
+  "TechnicalSupportAndPrivacy": [
+    {
+      "question": "What should I do if I forget my password?",
+      "answer": "Click on the 'Forgot Password' link on the login page, and we’ll send you an email to reset your password securely."
+    },
+    {
+      "question": "How does UpperSkill ensure my data is secure?",
+      "answer": "We take data privacy seriously. All personal data is encrypted, and our platform adheres to industry-standard security practices."
+    },
+    {
+      "question": "Who do I contact for technical support?",
+      "answer": "You can reach out to our support team via the 'Contact Us' page or email us at support@upperskill.com."
+    }
+  ],
+  "FuturePlansAndUpdates": [
+    {
+      "question": "Are there any upcoming features?",
+      "answer": "Yes! We’re constantly working to enhance UpperSkill. Upcoming features include team-based learning for businesses, integration with certifications, and community-driven learning modules."
+    },
+    {
+      "question": "How can I suggest improvements or provide feedback?",
+      "answer": "We value your feedback! Use the form on the 'Contact Us' page or email us directly with your suggestions."
+    }
+  ]
+  
+}

@@ -1,0 +1,103 @@
+.faq-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 720px;
+        gap: 24px;  
+        background-color: var(--background-color);   
+        padding: 14px 16px;
+        border-radius: 10px;
+        box-shadow: var(--m1-elevation);
+        border: none;
+        
+}
+
+.question {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        text-align: left;
+        color: var(--accent-500);
+        font-family: var( --headings-subheading-font-family);
+        font-size:var(--headings-subheading-font-size); 
+        font-style: var(--headings-subheading-font-style);
+        font-weight: var(--headings-subheading-font-weight);
+        letter-spacing: var(--headings-subheading-letter-spacing);
+        line-height: var(--headings-subheading-line-height);
+        transition: all 0.8s;
+}
+
+
+.divider-line {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        content: '';
+        background-color: var(--black-100);
+        height: 1px;
+        width: 100%;
+        
+}
+
+.answer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        text-align: left;
+        color: var(--accent-500);
+        font-family: var( --body-bold-font-family);
+        font-size:var(--body-bold-font-size); 
+        font-style: var(--body-bold-font-style);
+        font-weight: var(--body-bold-font-weight);
+        letter-spacing: var(--body-bold-letter-spacing);
+        line-height: var(--body-bold-line-height);
+        gap: 14px;
+        transition: all 0.8s;
+}
+
+.arrow-up {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background-color: var(--accent-500);
+        color: var(--background-color);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.8s;
+}
+
+.arrow-up:hover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background-color: var(--accent-500);
+        color: var(--background-color);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: var(--m1-elevation);
+        transition: all 0.8s;
+}
+
+
+.arrow-up-clicked {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        background-color: var(--accent-500);
+        color: var(--background-color);
+        border-radius: 50%;
+        cursor: pointer;
+        rotate: 180deg;
+        box-shadow: var(--m1-elevation);
+        transition: all 0.8s;
+}

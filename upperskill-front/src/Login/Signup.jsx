@@ -1,7 +1,8 @@
 import "./LoginForm.css";
 import { ArrowRight } from "../icons/Arrow-right";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm , Controller } from "react-hook-form";
+
 
 
 const Signup = () => {
@@ -10,6 +11,7 @@ const Signup = () => {
   // it returns an object with properties that we can use to register our form inputs
   const { register,
           handleSubmit,
+          control,
           getValues,
           formState: { errors, isSubmitting}
           } = useForm();
@@ -110,6 +112,24 @@ const Signup = () => {
                           />
                           {errors.confirmPassword && <span className="error-message">{errors.confirmPassword.message}</span> }
                           {errors.confirmPassword && errors.confirmPassword.type === 'minLength' && <span className="error-message">Password must be at least 6 characters</span> }
+                        </div>
+
+                        <div className="checkbox-field">
+                        <Controller
+                          name="isStudent"
+                          control={control}
+                          defaultValue={true}
+                          render={({ field }) => (
+                          <label className="checkbox-label">
+                            <input className="checkbox-input"
+                            type="checkbox"
+                            {...field}
+                              onChange={(e) => field.onChange(!e.target.checked)}
+                            />
+                            I am a Teacher.
+                          </label>
+                          )}
+                          />
                         </div>
                         
                         <button type="submit" className="submit-button" disabled={isSubmitting}

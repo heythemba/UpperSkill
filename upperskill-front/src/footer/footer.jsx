@@ -23,7 +23,7 @@ const Footer = (
                                 <Link className='footer-link' to='/Home'>Home</Link>
                                 <Link className='footer-link' to='/About'>About Us</Link>
                                 <Link className='footer-link' to='/Contact'>Contact Us</Link>
-                                <Link className='footer-link' to='/FAQ'>FAQs</Link>
+                                <Link className='footer-link' to='/FAQs'>FAQs</Link>
                                 <Link className='footer-link' to='/Privacy'>Privacy Policy</Link>
                         </div>
                 </div>          
