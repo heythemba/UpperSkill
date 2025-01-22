@@ -64,12 +64,12 @@ export const signup = async (req, res) => {
   }
 };
 
-// User login, this function retrieves the email and password from the request body,
+// User login, this function retrieves the username and password from the request body,
 // finds the user in the database, compares the hashed password, and generates a JWT token if the credentials are correct,
 // it then sets the JWT token as a cookie in the response and sends the user's information as a response.
 export const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     const user = await User.findOne({ email });
     const isPasswordCorrect = await bcrypt.compare(
       password,
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
     );
 
     if (!user || !isPasswordCorrect) {
-      return res.status(400).json({ error: "Invalid email or password" });
+      return res.status(400).json({ error: "Invalid username or password" });
     }
 
     generateTokenAndSetCookie(user._id, res);
