@@ -4,13 +4,20 @@ import logo from "../assets/logo192.png";
 import { Avatar } from "../icons/avatar.jsx";
 import CtaButton from "../cta-btn/button.jsx";
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import { Settings, User, LogOut } from 'react-feather';
 
 export const NavBar = ({
     isLogged = false,
-    UserIcon ,
+    UserIcon = <Avatar />,
     UserName = "Haythem"
 }) => {
+
+    const [profileMenu, setProfileMenu] = useState(false);
+    const handleProfileMenu = () => { 
+        setProfileMenu(!profileMenu);
+    }
+
     return (
         <nav className="nav-bar">
             
@@ -41,9 +48,27 @@ export const NavBar = ({
 
             {isLogged && (
                 <>
-                    <div className="logged-navbar">
+                    <div className="logged-navbar" onClick={() => handleProfileMenu()}>
+                        
+                        <div className="user-menu">
                         <h6>{UserName}</h6>
-                        <div className="avatar">{UserIcon}</div>
+                        {UserIcon}
+                        </div>
+                        {profileMenu && (
+                            <div className="menu-profile" onMouseLeave={() => handleProfileMenu()}>
+                            <ul>
+                                    <li>
+                                            <Link className='profile-menu-links' to="/Dashboard/profile">{<User size={24} color='var(--primary-500)' />} Profile</Link>
+                                    </li>
+                                    <li> 
+                                            <Link className='profile-menu-links' to="/Dashboard/Settings">{<Settings size={24} color='var(--primary-500)' /> } Settings</Link>
+                                    </li>
+                                    <li>
+                                            <button className='logout-btn' onClick={() => console.log('Logged-out')}>{<LogOut size={24} color='var(--background-color)' />} Logout</button>
+                                    </li>
+                            </ul>
+                            </div>
+                        )}
                     </div>
 
                     

@@ -17,7 +17,7 @@ const CoursesCard = ({
                         </div>
                         <div className="card-cta">
                                 <div className="in-progress-label">
-                                        <p className='content'>In-Pogress</p>
+                                        <span>In-Progress</span>
                                 </div>
                                 <button className="btn" onClick={onClick} >Continue learning</button>
                         </div>

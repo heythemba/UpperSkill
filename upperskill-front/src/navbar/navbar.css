@@ -96,7 +96,7 @@
     top: 0;
     z-index: 100; 
 }   
-
+/*Style Navbar after login*/
 .logged-navbar{
     display: flex;
     flex-direction: row;
@@ -104,16 +104,100 @@
     align-items: center;
     width: 100%;
     padding-left: 120px;
-    background-color: transparent;
+    background-color: var(--background-color);
     gap: 16px;
 }
-.avatar {
+
+/*Drop Down use menu style*/
+.menu-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+    right: 156px;
+    background-color: var(--background-color);
+    border: 1px solid var(--accent-500);
+    border-radius: 8px;
+    box-shadow: var(--m1-elevation);
+    z-index: 1000;
+    padding: 14px 16px;
+    width: 200px;
+    
+}
+
+.menu-profile ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    list-style: none;  /* Removing default list styling */ 
+    padding: 0;
+}
+
+.user-menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
+    width: auto;
     height: 40px;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    transition: all 0.8s;
 }
+
+.profile-menu-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-500);
+    font-family: var( --body-bold-font-family);
+    font-size:var(--body-bold-font-size); 
+    font-style: var(--body-bold-font-style);
+    font-weight: var(--body-bold-font-weight);
+    letter-spacing: var(--body-bold-letter-spacing);
+    line-height: var(--body-bold-line-height);
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.8s;
+}
+
+.profile-menu-links:hover{
+    text-decoration: underline;
+    transition: all 0.8s;
+}
+
+.logout-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--background-color);
+    background-color: var(--primary-500);
+    font-family: var( --body-bold-font-family);
+    font-size:var(--body-bold-font-size); 
+    font-style: var(--body-bold-font-style);
+    font-weight: var(--body-bold-font-weight);
+    letter-spacing: var(--body-bold-letter-spacing);
+    line-height: var(--body-bold-line-height);
+    width: auto;
+    height: 40px;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    transition: all 0.8s;
+    border: none;
+}
+
+.logout-btn:hover{
+    cursor: pointer;
+    background-color: var(--accent-500);
+    transition: all 0.8s;
+}
+
 .logged-navbar h6{
     color: var(--primary-500);
     font-family: var( --body-bold-font-family);
@@ -125,6 +209,11 @@
     margin: 0px;
 }
 
+.user-menu:hover{
+    cursor: pointer;
+    background-color: var(--secondary-200);
+    transition: all 0.8s;
+}
 
 
 
