@@ -19,6 +19,20 @@ const  App = () => {
 
   const { isLogged } = useContext(UserStatus);
 
+  const getUser = async () => {
+    try {
+      const res = await fetch('/api/auth/me');
+      if (res.ok === true) {
+        const userData = await res.json();
+        console.log(userData);
+      } else {
+        throw new Error('Something went wrong');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
     <div className="App">
@@ -39,6 +53,7 @@ const  App = () => {
         </Routes>
 
       <Footer isLogged={isLogged}/>
+      <button onClick={()=> getUser()}>get user</button>
     </div>
     </>
   )
