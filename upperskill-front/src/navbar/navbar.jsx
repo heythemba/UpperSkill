@@ -7,11 +7,15 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Settings, User, LogOut } from 'react-feather';
 
+
 export const NavBar = ({
     isLogged = false,
     UserIcon = <Avatar />,
     UserName = "Haythem"
 }) => {
+    
+
+   
 
     const [profileMenu, setProfileMenu] = useState(false);
     const handleProfileMenu = () => { 
@@ -21,7 +25,7 @@ export const NavBar = ({
     return (
         <nav className="nav-bar">
             
-            {!isLogged && (
+            {!isLogged  && (
                 <>
                 
                     <div className="home-grp">

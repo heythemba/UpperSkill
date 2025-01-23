@@ -5,8 +5,9 @@
   align-items: center;
   height: 100vh;
   width: 100%;
-  padding: 96px 156px 0px 156px;
+  padding: 96px 156px 24px 156px;
   background-color: var(--primary-50);
+  overflow-y: scroll;
 }
 
   /* Container styles */
@@ -255,4 +256,16 @@ input::placeholder {
   
   .checkbox-input:hover {
     border-color: var(--accent-500);
+  }
+
+  /* Toaster Style*/ 
+
+  .toaster-font-style {
+    font-family: var( --body-bold-font-family);
+    font-size:var(--body-bold-font-size); 
+    font-style: var(--body-bold-font-style);
+    font-weight: var(--body-bold-font-weight);
+    letter-spacing: var(--body-bold-letter-spacing);
+    line-height: var(--body-bold-line-height);
+    color: var(--primary-500);
   }

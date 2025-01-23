@@ -6,32 +6,25 @@ import AboutUs from './About/about.jsx';
 import { Routes, Route } from 'react-router-dom';
 import NotFoundPage from './404/404.jsx';
 import WebApp from './WebApp/WebApp.jsx'
-import { useEffect, useState } from 'react';
 import Login from './Login/Login.jsx';
 import Signup from './Login/Signup.jsx';
 import FAQs from './FAQs/FAQs.jsx';
+import { useContext } from 'react';
+import { UserStatus } from './UserProvider.jsx';
 
-const isLogged = false;
+
+
 
 const  App = () => {
 
-  // this is a state to set path to dashboard if user is logged in
-  const [sessionType, setSession] = useState(isLogged);
-
-  useEffect(() => {
-    if ((window.location.pathname === '/Dashboard')
-      || (window.location.pathname === '/Dashboard/Dash')
-      || (window.location.pathname === '/Dashboard/')) {
-      setSession(true);
-    }
-  }, []);
-
-  
+  const { isLogged } = useContext(UserStatus);
 
   return (
     <>
     <div className="App">
-      <NavBar isLogged={sessionType}/>
+    
+      
+      <NavBar isLogged={isLogged}/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Home" element={<HomePage />} />
@@ -45,7 +38,7 @@ const  App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
 
-      <Footer isLogged={sessionType}/>
+      <Footer isLogged={isLogged}/>
     </div>
     </>
   )

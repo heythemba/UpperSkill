@@ -2,8 +2,15 @@ import "./LoginForm.css";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "../icons/Arrow-right";
 import { useForm } from "react-hook-form";
+import {toast, Toaster } from "react-hot-toast";
+import { useContext } from 'react';
+import { UserStatus } from '../UserProvider.jsx';
 
 const Login = () => {
+
+  const { handleLogin } = useContext(UserStatus);
+
+ 
 
   // this is a predefined function from react-hook-form that is used to handle form submission
   // it returns an object with properties that we can use to register our form inputs
@@ -12,12 +19,31 @@ const Login = () => {
         formState: { errors, isSubmitting }
         } = useForm();
  // this function is called when the form is submitted
-  const onSubmit = async (data) => {
-    //replace the resolve function with a request to the server and remove the console.log
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log(data);
-    
+ const onSubmit = async (data) => {
+            
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+      });
+      console.log(data);
+        if (res.status === 200) {
+          toast.success('Logged in successfully');
+          handleLogin();
+      } else if (res.status === 400) {
+        toast.error('Invalid username or password');
+        throw new Error('Invalid username or password');
+      } else {
+        toast.error('Something went wrong');
+        throw new Error('Something went wrong');
+      }
+  } catch (error) {
+    console.error(error);
   }
+ }
   return(
     <>
       <div className='login-form-wrapper'>
@@ -25,19 +51,19 @@ const Login = () => {
           <h4 className="login-form-title">Login to your account </h4>
             <form className="login-form"  onSubmit={handleSubmit(onSubmit)}>
               <div className="input-field">
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="username">Username:</label>
                 <input        
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  {...register('email', 
-                    { required: 'Email is required', 
-                      pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/ 
+                  type="username"
+                  id="username"
+                  placeholder="User Name"
+                  {...register('username', 
+                    { required: 'Username e is required', 
+                      pattern: /^[a-z0-9._]+$/
                     })}
                 />
-                {/* built-in from react form hool to Throw an error if email not provided or missing */}
-                {errors.email && <span className="error-message">{errors.email.message}</span> }
-                {errors.email && errors.email.type === 'pattern' && <span className="error-message">Invalid email address</span> }
+                {/* built-in from react form hool to Throw an error if username not provided or missing */}
+                {errors.username && <span className="error-message">{errors.username.message}</span> }
+                {errors.username && errors.username.type === 'pattern' && <span className="error-message">Invalid username address</span> }
               </div>
                 
               <div className="input-field">
@@ -68,6 +94,10 @@ const Login = () => {
           </div>
         </div> 
         </div>
+        <Toaster
+                      position="top-center"
+                      reverseOrder={false}
+                      />
     </>
   )
 };

@@ -78,7 +78,6 @@ const QuestionsList = ({
     const handleSubmit = () => {
           const userAnswersJson = JSON.stringify(userAnswers);
           console.log(userAnswersJson);
-          setQuizTaken(true);
           // User answer stored in Json formart to send it back
         };
   

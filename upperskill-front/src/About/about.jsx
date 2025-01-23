@@ -1,4 +1,4 @@
-import CtaButton from '../cta-btn/button';
+import { Link } from 'react-router-dom';
 import './about.css';
 import TeamMember from './Team-member';
 import { ArrowRight } from '../icons/Arrow-right.jsx';
@@ -38,7 +38,10 @@ const AboutUS = () => {
                 <h4>Elevate your skills with our recommended courses</h4>
                 <p>Our AI-Driven Quiz will assess your current knowledge and guide you through a customized learning path, UpperSkill ensures that every step of your journey leads to success.</p>
           </div>
-          <CtaButton priority='primary' text='Get Started' icon={<ArrowRight />} theme='Dark' />
+          <Link to='/login' className='link-signup'>
+          Get Started 
+          {<ArrowRight />}
+          </Link>
          </div>
 
         </div>

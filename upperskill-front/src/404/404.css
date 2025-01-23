@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   padding: 96px 156px;
   background-color: var(--black-50);
@@ -24,6 +24,7 @@
         font-style: var(--headings-heading-font-style);
         font-weight: var(--headings-heading-font-weight);
         letter-spacing: var(--headings-heading-letter-spacing);
+        line-height: var(--titles-title-line-height);
         color: var(--accent-500);
 }
 

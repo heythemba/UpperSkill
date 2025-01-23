@@ -2,10 +2,16 @@ import "./LoginForm.css";
 import { ArrowRight } from "../icons/Arrow-right";
 import { Link } from "react-router-dom";
 import { useForm , Controller } from "react-hook-form";
+import {toast, Toaster} from "react-hot-toast";
+import { useContext } from 'react';
+import { UserStatus } from '../UserProvider.jsx';
+
 
 
 
 const Signup = () => {
+
+    const { handleLogin } = useContext(UserStatus);
 
   // this is a predefined function from react-hook-form that is used to handle form submission
   // it returns an object with properties that we can use to register our form inputs
@@ -13,15 +19,37 @@ const Signup = () => {
           handleSubmit,
           control,
           getValues,
-          formState: { errors, isSubmitting}
+          formState: { errors, isSubmitting }
           } = useForm();
          // this function is called when the form is submitted
           const onSubmit = async (data) => {
-            //replace the resolve function with a request to the server and remove the console.log
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            console.log(data);
             
-          }
+
+            try {
+              const res = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                });
+                console.log(data);
+                  if (res.status === 201) {
+                    toast.success('Account created successfully');
+                    handleLogin();
+                } else if (res.status === 400) {
+                  toast.error('Invalid user data');
+                  throw new Error('Invalid user data');
+                } else {
+                  toast.error('Something went wrong');
+                  throw new Error('Something went wrong');
+                }
+            } catch (error) {
+              console.error(error);
+            }
+              
+              
+        }
 
         return(
                 // Sign-up form
@@ -69,14 +97,14 @@ const Signup = () => {
                             type="username"
                             id="username"
                             placeholder="Username"
-                            {...register('userName',
+                            {...register('username',
                               { required: 'User Name is required', 
                                 pattern: /^[a-z0-9._]+$/
                               }
                             )}
                           />
-                          {errors.userName && <span className="error-message">{errors.userName.message}</span> }
-                          {errors.userName && errors.userName.type === 'pattern' && <span className="error-message">Invalid user name</span> }
+                          {errors.username && <span className="error-message">{errors.username.message}</span> }
+                          {errors.username && errors.username.type === 'pattern' && <span className="error-message">Invalid Username</span> }
                         </div>
                 
                         <div className="input-field">
@@ -134,7 +162,8 @@ const Signup = () => {
                         
                         <button type="submit" className="submit-button" disabled={isSubmitting}
                         > 
-                        Sign-Up <span>{<ArrowRight />}</span></button>
+                        {isSubmitting ? "Creating ..." : "Create Account"} <span className='arrow-icon'>{<ArrowRight />}</span>
+                        </button>
                 
                       </form>
                       <div className='divider-login'></div>
@@ -143,6 +172,10 @@ const Signup = () => {
                       </div>
                     </div>
                     </div>
+                    <Toaster
+                      position="top-center"
+                      reverseOrder={false}
+                      />
                 </>
         
 )};

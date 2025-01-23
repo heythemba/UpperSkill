@@ -6,9 +6,15 @@ import {CoursesIcon} from '../../icons/CoursesIcon.jsx';
 import {SettingIcon} from '../../icons/SettingIcon.jsx';
 import {FaqIcon} from '../../icons/FaqIcon.jsx';
 import {LogoutIcon} from '../../icons/LogoutIcon.jsx';
+import { useContext } from 'react';
+import { UserStatus } from '../../UserProvider.jsx';
+
 
 
 const SideMenu = () => {
+
+      const { handleLogout } = useContext(UserStatus);
+        
         const [activeButton, setActiveButton] = useState(window.location.pathname);
 
         const handleButtonClick = (path) => {
@@ -54,7 +60,7 @@ const SideMenu = () => {
                 </div>
                 <div className="logout-menu">
                 <div className="divider-side-menu"></div>
-                <button className="btn-logout" onClick={()=> (console.log('logout'))}
+                <button className="btn-logout" onClick={()=> handleLogout()}
                 >
                   <span><LogoutIcon /></span>
                   Logout

@@ -110,3 +110,29 @@ color: var(--accent-400);
         padding: 96px 156px;
         gap: 48px;
 }
+
+.link-signup{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 16px;
+        border-radius: 8px;
+        gap: 8px;
+        background-color: var(--primary-500);
+        color: var(--background-color);
+        font-family: var( --body-bold-font-family);
+        font-size:var(--body-bold-font-size); 
+        font-style: var(--body-bold-font-style);
+        font-weight: var(--body-bold-font-weight);
+        letter-spacing: var(--body-bold-letter-spacing);
+        line-height: var(--body-bold-line-height);
+        text-decoration: none;
+        box-shadow: var(--drop-shadow-base);
+        transition: all 0.8s;
+}
+
+.link-signup:hover{
+        box-shadow: var(--drop-shadow-btn-hover);
+        transition: all 0.8s;
+}

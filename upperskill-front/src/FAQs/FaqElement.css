@@ -8,7 +8,7 @@
         background-color: var(--background-color);   
         padding: 14px 16px;
         border-radius: 10px;
-        box-shadow: var(--m1-elevation);
+        
         border: none;
         
 }
@@ -69,6 +69,7 @@
         color: var(--background-color);
         border-radius: 50%;
         cursor: pointer;
+        box-shadow: var(--m1-elevation);
         transition: all 0.8s;
 }
 
