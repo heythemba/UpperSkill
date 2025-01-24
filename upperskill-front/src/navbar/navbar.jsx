@@ -6,6 +6,8 @@ import CtaButton from "../cta-btn/button.jsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Settings, User, LogOut } from 'react-feather';
+import { useContext } from 'react';
+import { UserStatus } from '../UserProvider.jsx';
 
 
 export const NavBar = ({
@@ -15,7 +17,7 @@ export const NavBar = ({
 }) => {
     
 
-   
+   const { handleLogout } = useContext(UserStatus);
 
     const [profileMenu, setProfileMenu] = useState(false);
     const handleProfileMenu = () => { 
@@ -68,7 +70,7 @@ export const NavBar = ({
                                             <Link className='profile-menu-links' to="/Dashboard/Settings">{<Settings size={24} color='var(--primary-500)' /> } Settings</Link>
                                     </li>
                                     <li>
-                                            <button className='logout-btn' onClick={() => console.log('Logged-out')}>{<LogOut size={24} color='var(--background-color)' />} Logout</button>
+                                            <button className='logout-btn' onClick={() => handleLogout()}>{<LogOut size={24} color='var(--background-color)' />} Logout</button>
                                     </li>
                             </ul>
                             </div>
