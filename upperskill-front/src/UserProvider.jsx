@@ -9,8 +9,9 @@ export const UserStatus = createContext ();
 
  export const UserProvider = ({ children }) => {
 
+  // a state to manage the login status of the user
    const [isLogged, setIsLogged] = useState();
-  
+  // useEffect is called to set isLooged to true if the user is already logged in
   useEffect(() => {
     // Check localStorage for login state
     const loggedIn = localStorage.getItem('isLogged');
@@ -25,7 +26,25 @@ export const UserStatus = createContext ();
     window.location.pathname = '/Dashboard/dash';
   };
 
-      
+  // Getting all the information about the logged in user
+  const [userData, setUserData] = useState({});
+
+ // calling this function will send a request to backend to gel all information about the actual user
+  const getUser = async () => {
+    try {
+      const res = await fetch('/api/auth/me');
+      if (res.status === 200) {
+        setUserData(await res.json());
+        localStorage.setItem('userData', userData);
+      } else {
+        throw new Error('Something went wrong');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+      // Logout function  
       const handleLogout =  async () => {
               
               try {
@@ -41,6 +60,7 @@ export const UserStatus = createContext ();
                         window.location.pathname = '/login';
                         setIsLogged(false);
                         localStorage.setItem('isLogged', 'false');
+                        localStorage.setItem('userData', undefined);
                 } else {
                   
                   throw new Error('Something went wrong');
@@ -53,7 +73,7 @@ export const UserStatus = createContext ();
             }
 
         return (
-                <UserStatus.Provider value={{isLogged, setIsLogged, handleLogin, handleLogout}} >
+                <UserStatus.Provider value={{isLogged, setIsLogged, handleLogin, handleLogout, getUser, userData}} >
                         {children}
                 </UserStatus.Provider>
         )

@@ -83,7 +83,6 @@ const QuestionsList = ({
   
 
         if (!Array.isArray(questionsData)) {
-                console.error("Invalid data format for questions:", questionsData);
                 return <Loader />;
               }
 
