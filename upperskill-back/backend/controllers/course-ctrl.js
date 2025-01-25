@@ -1,25 +1,29 @@
+import { v2 as cloudinary } from "cloudinary";
+import qs from "qs";
+
 import Course from "../models/course-model.js";
 import User from "../models/user-model.js";
-import { v2 as cloudinary } from "cloudinary";
 
-// Retrieves the necessary data from the request body, validates the input,
-// uploads the course image to Cloudinary, creates a new Course document,
-// and saves it to the database.
+//Retrieves the necessary data from the request body, validates the input,
+//uploads the course image to Cloudinary, creates a new Course document,
+//and saves it to the database.
 export const createCourse = async (req, res) => {
   try {
-    const { title, description, content } = req.body;
+    const { title, description, content, topic } = req.body;
     let { img } = req.body;
     const userId = req.user._id.toString();
 
     const user = await User.findById(userId);
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!user) return res.status(404).json({ error: "User not found" });
 
-    if (!title || !description || !content || !img) {
+    if (!title || !description || !content || !img || !topic) {
       return res.status(400).json({ error: "fill all the field" });
     }
+    if (!validateTopic(topic))
+      return res.status(400).json({ error: "wrong topic title or subtopics" });
 
     if (img) {
-      const uploadedResponse = await cloudinary.uploader.upload(img, {});
+      const uploadedResponse = await cloudinary.uploader.upload(img);
       img = uploadedResponse.secure_url;
     }
 
@@ -28,6 +32,7 @@ export const createCourse = async (req, res) => {
       title,
       description,
       content,
+      topic,
       img,
     });
 
@@ -38,9 +43,8 @@ export const createCourse = async (req, res) => {
     console.log("Error in createCourse ", error);
   }
 };
-
-// Finds the course by its ID, checks if the user is authorized to delete the course,
-// deletes the course image from Cloudinary, and removes the course from the database.
+//finds the course by its ID, checks if the user is authorized to delete the course,
+//deletes the course image from Cloudinary, and removes the course from the database.
 export const deleteCourse = async (req, res) => {
   try {
     const course = await Course.findById(req.params.id);
@@ -61,33 +65,43 @@ export const deleteCourse = async (req, res) => {
 
     await Course.findByIdAndDelete(req.params.id);
 
-    res.status(200).json({ message: "Course deleted successfully" });
+    res.status(200).json({ error: "Course deleted successfully" });
   } catch (error) {
     console.log("Error in deleteCourse ", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
-// Retrieves all courses from the database and sorts them by title in ascending order,
-// then sends the list of courses as a response to the client.
+//retrieves all courses from the database and sorts them by title in ascending order,
+//then sends the list of courses as a response to the client.
 export const getAllCourses = async (req, res) => {
+  const topic = qs.parse(req.query).topic;
+  console.log(topic);
   try {
-    const courses = await Course.find().sort({ title: 1 });
+    if (topic) {
+      const course = await Course.find({ "topic.title": topic }).sort({
+        title: 1,
+      });
+      if (course.length === 0) {
+        return res.status(200).json([]);
+      }
 
-    if (courses.length === 0) {
-      return res.status(200).json([]);
+      res.status(200).json(course);
+    } else {
+      const course = await Course.find().sort({ title: 1 });
+      if (course.length === 0) {
+        return res.status(200).json([]);
+      }
+
+      res.status(200).json(course);
     }
-
-    res.status(200).json(courses);
   } catch (error) {
     console.log("Error in getallcourses : ", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
-// Enroll a user to a specific course, it retrieves the user ID and course ID from the request parameters,
-// checks if the user is already enrolled in the course, adds the user to the course's enrolled list,
-// and updates the user's enrolled courses list.
+//enroll a user to a specific course, it retrieves the user ID and course ID from the request parameters,
+//checks if the user is already enrolled in the course, adds the user to the course's enrolled list,
+//and updates the user's enrolled courses list.
 export const enrollToCourse = async (req, res) => {
   try {
     const userId = req.user._id;
@@ -97,7 +111,7 @@ export const enrollToCourse = async (req, res) => {
     const user = req.user;
 
     if (!courseId) {
-      return res.status(404).json({ error: "Course not found" });
+      return res.status(404).json({ error: "course not found" });
     }
     const enrolled = course.enroll.includes(userId);
 
@@ -116,7 +130,7 @@ export const enrollToCourse = async (req, res) => {
       );
       await user.save();
 
-      res.status(200).json({ message: "Enrolled successfully" });
+      res.status(200).json({ error: "Enrolled successfully" });
     } else {
       return res
         .status(400)
@@ -127,10 +141,9 @@ export const enrollToCourse = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
-// Retrieves the list of courses that a specific user is enrolled in,
-// it finds the user by their ID, retrieves the enrolled courses from the database,
-// and sends the list of enrolled courses as a response to the client.
+//retrieves the list of courses that a specific user is enrolled in,
+//it finds the user by their ID, retrieves the enrolled courses from the database,
+//and sends the list of enrolled courses as a response to the client.
 export const yourCourses = async (req, res) => {
   const userId = req.params.id;
 
@@ -146,3 +159,86 @@ export const yourCourses = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+function validateTopic(topic) {
+  const { title, subtopics } = topic;
+  if (typeof title != "string" || !Array.isArray(subtopics)) return false;
+  switch (title) {
+    case "Health and Personal Development":
+      if (
+        subtopics.length <= 3 &&
+        subtopics.every((subtopic) =>
+          ["Mental Wellness", "Physical Fitness", "Personal Growth"].includes(
+            subtopic
+          )
+        )
+      )
+        return true;
+      break;
+    case "Language and Communication":
+      if (
+        subtopics.length <= 3 &&
+        subtopics.every((subtopic) =>
+          [
+            "Language Learning",
+            "Public Speaking",
+            "Writing and Editing",
+          ].includes(subtopic)
+        )
+      )
+        return true;
+      break;
+    case "Creative Skills":
+      if (
+        subtopics.length <= 3 &&
+        subtopics.every((subtopic) =>
+          [
+            "Design and Multimedia",
+            "Content Creation",
+            "Music and Audio Production",
+          ].includes(subtopic)
+        )
+      )
+        return true;
+      break;
+    case "STEM (Science, Technology, Engineering, Mathematics)":
+      if (
+        subtopics.length <= 3 &&
+        subtopics.every((subtopic) =>
+          ["Natural Sciences", "Engineering", "Mathematics"].includes(subtopic)
+        )
+      )
+        return true;
+      break;
+    case "Business and Management":
+      if (
+        subtopics.length <= 4 &&
+        subtopics.every((subtopic) =>
+          [
+            "Leadership and Strategy",
+            "Project Management",
+            "Entrepreneurship",
+            "Finance and Accounting",
+          ].includes(subtopic)
+        )
+      )
+        return true;
+      break;
+    case "Technology and Programming":
+      if (
+        subtopics.length <= 4 &&
+        subtopics.every((subtopic) =>
+          [
+            "Web Development",
+            "Data Science and AI",
+            "Cybersecurity",
+            "Cloud Computing",
+          ].includes(subtopic)
+        )
+      )
+        return true;
+      break;
+    default:
+      return false;
+  }
+}
