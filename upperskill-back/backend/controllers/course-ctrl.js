@@ -160,6 +160,31 @@ export const yourCourses = async (req, res) => {
   }
 };
 
+//This function is used to rocommend the list of courses based on the ai quiz data
+
+export const recommandation = async (req, res) => {
+  const topic = qs.parse(req.query).topic;
+  const userId = req.user._id;
+  try {
+    let user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const course = await Course.find({ "topic.title": topic }).sort({
+      title: 1,
+    });
+    res.status(200).json(course);
+
+    user.quizTaken = true;
+    user.isStudent = true;
+    await user.save();
+
+  } catch (error) {
+    console.log("Error in recommandation controller", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+//This function is used to validate the topic title and subtopics.
 function validateTopic(topic) {
   const { title, subtopics } = topic;
   if (typeof title != "string" || !Array.isArray(subtopics)) return false;
