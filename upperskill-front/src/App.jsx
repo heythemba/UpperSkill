@@ -16,18 +16,17 @@ import { UserStatus } from './UserProvider.jsx';
 
 
 
+
 const  App = () => {
 
   const { isLogged, getUser, userData } = useContext(UserStatus);
 
   useEffect(() => {
     if (isLogged){
-
       getUser();
     }
     
-  }, [getUser, isLogged]);
-
+  }, );
 
   return (
     <>
@@ -44,6 +43,7 @@ const  App = () => {
           <Route path="/Sign-Up" element={<Signup />} />
           <Route path="/SignUp" element={<Signup />} />
           <Route path='/Dashboard' element={<WebApp /> }/>
+          <Route path='/Dashboard/*' element={ <WebApp />  }/>
           <Route path='/FAQs' element={<FAQs />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

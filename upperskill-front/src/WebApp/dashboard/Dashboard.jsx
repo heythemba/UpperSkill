@@ -1,16 +1,16 @@
 import CoursesCard from '../courses/CoursesCard.jsx';
 import './Dashboard.css';
-import PropTypes from 'prop-types';
 import QuestionsList from '../questions/questionsList.jsx';
+import { useContext } from 'react';
+import { UserStatus } from '../../UserProvider.jsx';
 
-const Dashboard = ({
-  quizTaken = false,
-}) => {
+const Dashboard = () => {
   
+  const { quizTaken} = useContext(UserStatus);
 
   return (
     <div className='dashboard-body'>
-
+      
       {quizTaken ? (
 
         <CoursesCard />
@@ -25,8 +25,5 @@ const Dashboard = ({
   );
 };
 
-Dashboard.propTypes = {
-  quizTaken: PropTypes.bool
-};
 
 export default Dashboard;

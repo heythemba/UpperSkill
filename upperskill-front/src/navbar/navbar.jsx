@@ -13,7 +13,7 @@ import { UserStatus } from '../UserProvider.jsx';
 export const NavBar = ({
     isLogged = false,
     UserIcon = <Avatar />,
-    UserName = "Haythem"
+    UserName = "Username"
 }) => {
     
 

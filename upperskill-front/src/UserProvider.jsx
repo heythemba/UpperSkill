@@ -3,15 +3,35 @@ import PropTypes from "prop-types";
 import { toast } from "react-hot-toast";
 
 
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const UserStatus = createContext ();
 
 
  export const UserProvider = ({ children }) => {
 
+  // Initialize quizTaken state based on localStorage
+  const [quizTaken, setQuizTaken] = useState();
+
+  const handleQuiz = async () => {
+    try {
+      const res = await fetch('/api/auth/me', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+    } catch (error) {
+    throw new error('handling quiz went wrong');
+      console.error(error);
+    }
+  }
+
+
   // a state to manage the login status of the user
    const [isLogged, setIsLogged] = useState();
-  // useEffect is called to set isLooged to true if the user is already logged in
+  // useEffect is called to set isLogged to true if the user is already logged in
   useEffect(() => {
     // Check localStorage for login state
     const loggedIn = localStorage.getItem('isLogged');
@@ -37,7 +57,7 @@ export const UserStatus = createContext ();
         setUserData(await res.json());
         localStorage.setItem('userData', userData);
       } else {
-        throw new Error('Something went wrong');
+        throw new Error('Unauthorized access');
       }
     } catch (error) {
       console.error(error);
@@ -61,6 +81,7 @@ export const UserStatus = createContext ();
                         setIsLogged(false);
                         localStorage.setItem('isLogged', 'false');
                         localStorage.setItem('userData', undefined);
+                        
                 } else {
                   
                   throw new Error('Something went wrong');
@@ -73,7 +94,7 @@ export const UserStatus = createContext ();
             }
 
         return (
-                <UserStatus.Provider value={{isLogged, setIsLogged, handleLogin, handleLogout, getUser, userData}} >
+                <UserStatus.Provider value={{isLogged, setIsLogged, handleLogin, handleLogout, getUser, userData,handleQuizTaken, quizTaken}} >
                         {children}
                 </UserStatus.Provider>
         )

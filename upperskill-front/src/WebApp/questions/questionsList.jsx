@@ -1,12 +1,12 @@
 import CtaButton from '../../cta-btn/button.jsx';
 import Loader from './Loader.jsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import openai from '../../requestQuestions.mjs';
-import PropTypes from 'prop-types'
+import { UserStatus } from '../../UserProvider.jsx';
 
-const QuestionsList = ({
-        quizTaken = false,
-}) => {
+const QuestionsList = () => {
+
+  const { handleQuizTaken } = useContext(UserStatus);
   
         // State for storing questions data
   const [questionsData, setQuestionsData] = useState(null);
@@ -61,19 +61,56 @@ const QuestionsList = ({
   }, []);
 
 
+
   const handleAnswer = (index, choice) => {
       const newAnswers = [...userAnswers];
       newAnswers[index] = choice;
       setUserAnswers(newAnswers);
     };
-    // State to switch between quiz taken or not.
-    const [userDidQuiz, setQuizTaken] = useState(quizTaken);
-  
+
+
+    /*
+
+    // Fetch Recommandation from OpenAI API
     useEffect(() => {
-          if (userDidQuiz) {
-            setQuizTaken(true);
-          }
-        }, [userDidQuiz]);
+      const fetchAnalyse = async () => {
+        try {
+          const completion = await openai.chat.completions.create({
+            model: "gpt-4o-mini",
+            messages: [
+              { role: "system", content: "You are an IT Teacher." },
+              {
+                role: "user",
+                content: `Using These Questions: ${questionsData} and these answers: ${userAnswers}
+                Analyse the answers and return one recommandation for the user to be expert in one filed based on his answers, 
+                Your Answer should be in strict JSON format ONLY.
+                },`
+              },
+            ],
+            max_tokens: 10,
+            
+          });
+  
+          // Capture the raw response
+          let rawAnswer = completion.choices[0].message.content;
+  
+          // Log raw content for debugging
+          console.log("Raw Analyse:", rawAnswer);
+  
+          // Remove backticks and any extra formatting
+          rawAnswer = rawAnswer.replace(/```json|```/g, '').trim();
+  
+          // Attempt to parse as JSON
+          const analysedAnswer = JSON.parse(rawAnswer);
+  
+          // Log parsed JSON for debugging
+          console.log("Parsed JSON: ", analysedAnswer);
+  
+        } catch (error) {
+         throw console.error("Failed to analyse user questions:", error);
+        }
+      };
+    }, ); */
   
     const handleSubmit = () => {
           const userAnswersJson = JSON.stringify(userAnswers);
@@ -84,9 +121,9 @@ const QuestionsList = ({
 
         if (!Array.isArray(questionsData)) {
                 return <Loader />;
-              }
+        };
 
-
+    
         return (
                 
                 <div className="quiz-not-taken">
@@ -113,7 +150,8 @@ const QuestionsList = ({
                               </div>
                             ))}
                             <div className="submit-question">
-                                <CtaButton priority='primary' text="submit" theme='Dark' onClick={()=> handleSubmit()} />
+                            
+                                <CtaButton priority='primary' text="submit" theme='Dark' onClick={()=> (handleSubmit(), handleQuizTaken())} />
                                 </div>
                           </div>
                         </div>
@@ -121,8 +159,5 @@ const QuestionsList = ({
         )
 }
 
-QuestionsList.propTypes = {
-        quizTaken: PropTypes.bool
-      };
 
 export default QuestionsList;
