@@ -33,10 +33,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    coverImg: {
-      type: String,
-      default: "",
-    },
+    enrolled: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "course",
+      },
+    ],
   },
   { timestamps: true }
 );

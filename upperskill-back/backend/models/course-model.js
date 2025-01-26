@@ -11,20 +11,20 @@ const courseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    discription: {
+    description: {
       type: String,
       required: true,
     },
-    img: {
+    /* img: {
       type: String,
       required: false,
-    },
+    }, */
     content: {
       type: String,
       required: true,
     },
     topic: {
-      title: {
+      /* title: { */
         type: String,
         required: true,
         enum: [
@@ -35,8 +35,8 @@ const courseSchema = new mongoose.Schema(
           "Business and Management",
           "Technology and Programming",
         ],
-      },
-      subtopics: [
+      /* }, */
+      /* subtopics: [
         {
           type: String,
           required: true,
@@ -63,7 +63,7 @@ const courseSchema = new mongoose.Schema(
             "Cloud Computing",
           ],
         },
-      ],
+      ], */
     },
     enroll: [
       {

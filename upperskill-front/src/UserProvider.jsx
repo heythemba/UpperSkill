@@ -38,6 +38,7 @@ export const UserStatus = createContext ();
    const [isLogged, setIsLogged] = useState();
   // useEffect is called to set isLogged to true if the user is already logged in
   useEffect(() => {
+    console.log("user is already logged in")
     // Check localStorage for login state
     const loggedIn = localStorage.getItem('isLogged');
     if (loggedIn === 'true') {

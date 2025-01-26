@@ -10,22 +10,22 @@ import User from "../models/user-model.js";
 export const createCourse = async (req, res) => {
   try {
     const { title, description, content, topic } = req.body;
-    let { img } = req.body;
-    const userId = req.user._id.toString();
+/*     let { img } = req.body;
+ */    const userId = req.user._id.toString();
 
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    if (!title || !description || !content || !img || !topic) {
+    if (!title || !description || !content /* || !img  */|| !topic) {
       return res.status(400).json({ error: "fill all the field" });
     }
-    if (!validateTopic(topic))
+    /* if (!validateTopic(topic))
       return res.status(400).json({ error: "wrong topic title or subtopics" });
-
-    if (img) {
+ */
+    /* if (img) {
       const uploadedResponse = await cloudinary.uploader.upload(img);
       img = uploadedResponse.secure_url;
-    }
+    } */
 
     const newCourse = new Course({
       user: userId,
@@ -33,7 +33,7 @@ export const createCourse = async (req, res) => {
       description,
       content,
       topic,
-      img,
+      /* img, */
     });
 
     await newCourse.save();
@@ -160,6 +160,26 @@ export const yourCourses = async (req, res) => {
   }
 };
 
+export const teacherCourses = async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    const course = await Course.find({ "user": userId }).sort({
+      title: 1,
+    });
+    if (course.length === 0) {
+      return res.status(200).json([]);
+    }
+    res.status(200).json(course);
+  } catch (error) {
+    console.log("Error in teacherCourses controller: ", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 //This function is used to rocommend the list of courses based on the ai quiz data
 
 export const recommandation = async (req, res) => {
@@ -177,7 +197,6 @@ export const recommandation = async (req, res) => {
     user.quizTaken = true;
     user.isStudent = true;
     await user.save();
-
   } catch (error) {
     console.log("Error in recommandation controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
