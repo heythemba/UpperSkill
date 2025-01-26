@@ -10,21 +10,26 @@ export const UserStatus = createContext ();
 
  export const UserProvider = ({ children }) => {
 
-  // Initialize quizTaken state based on localStorage
-  const [quizTaken, setQuizTaken] = useState();
+  const [courseCreation, setCourseCreation] = useState(false);
+  const handleCourseCreation = () => {
+          setCourseCreation(!courseCreation);
+  }
+
+
 
   const handleQuiz = async () => {
+    
     try {
-      const res = await fetch('/api/auth/me', {
+      const res = await fetch('/api/course/quiz', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      
+      throw new Error('handling quiz went wrong');
     } catch (error) {
-    throw new error('handling quiz went wrong');
       console.error(error);
+      toast.error(error.message);
     }
   }
 
@@ -38,7 +43,7 @@ export const UserStatus = createContext ();
     if (loggedIn === 'true') {
       setIsLogged(true);
     }
-  }, []);
+  }, );
 
   const handleLogin = () => {
     setIsLogged(true);
@@ -81,6 +86,7 @@ export const UserStatus = createContext ();
                         setIsLogged(false);
                         localStorage.setItem('isLogged', 'false');
                         localStorage.setItem('userData', undefined);
+                        localStorage.removeItem('quizTaken');
                         
                 } else {
                   
@@ -94,7 +100,7 @@ export const UserStatus = createContext ();
             }
 
         return (
-                <UserStatus.Provider value={{isLogged, setIsLogged, handleLogin, handleLogout, getUser, userData,handleQuizTaken, quizTaken}} >
+                <UserStatus.Provider value={{isLogged, setIsLogged, handleLogin, handleLogout, getUser, userData,handleQuiz, handleCourseCreation, courseCreation}} >
                         {children}
                 </UserStatus.Provider>
         )

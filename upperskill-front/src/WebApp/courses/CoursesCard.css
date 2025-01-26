@@ -3,13 +3,21 @@
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        height: fit-content;
+        height: 200px;
         width: 100%;
         gap: 16px;
         border-radius: 12px;
         box-shadow: var(--m1-elevation);
-        overflow: hidden;
+
+       
 }
+
+.course-card img{
+        height: 200px;
+        width: 200px;
+        border-radius: 12px 0px 0px 12px;
+}
+
 
 .card-content{
         display: flex;
@@ -22,8 +30,8 @@
         padding: 16px;
 }
 
-.card-content h4{
-        color: var(--black-500);
+.card-content h6{
+        color: var(--primary-500);
         font-family: var(--headings-heading-font-family);
         font-size: var(--headings-heading-font-size);
         font-style: var(--headings-heading-font-style);
@@ -94,6 +102,6 @@
         font-weight: var(--body-small-font-weight);
         letter-spacing: var(--body-small-letter-spacing);
         line-height: var(--body-small-line-height);
-        padding: 12px 8px;
+        padding: 12px 24px;
         border-radius: 24px;
 }

@@ -1,0 +1,52 @@
+.teacher-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 90vh;
+        gap: 24px;
+}
+.cta-heading{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+}
+
+.heading-teacher{
+        display: inline;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 56px;
+        width: 100%;
+}
+
+.cta-primary{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        color: var(--background-color);
+        background-color: var(--primary-500);
+        border: none;
+        border-radius: 10px;
+        color: var(--background-color);
+        font-family: var(--body-bold-font-family);
+        font-size: var(--body-bold-font-size);
+        font-style: var(--body-bold-font-style);
+        font-weight: var(--body-bold-font-weight);
+        letter-spacing: var(--body-bold-letter-spacing);
+        line-height: var(--body-bold-line-height);
+}
+
+.cta-primary:hover{
+        transition: all 0.6s;
+        background-color: var(--primary-400);
+}

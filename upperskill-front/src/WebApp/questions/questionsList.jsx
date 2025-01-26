@@ -6,7 +6,7 @@ import { UserStatus } from '../../UserProvider.jsx';
 
 const QuestionsList = () => {
 
-  const { handleQuizTaken } = useContext(UserStatus);
+  const { handleQuiz } = useContext(UserStatus);
   
         // State for storing questions data
   const [questionsData, setQuestionsData] = useState(null);
@@ -151,7 +151,7 @@ const QuestionsList = () => {
                             ))}
                             <div className="submit-question">
                             
-                                <CtaButton priority='primary' text="submit" theme='Dark' onClick={()=> (handleSubmit(), handleQuizTaken())} />
+                                <CtaButton priority='primary' text="submit" theme='Dark' onClick={()=> (handleSubmit(), handleQuiz())} />
                                 </div>
                           </div>
                         </div>
