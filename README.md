@@ -1,6 +1,4 @@
 # UpperSkill
-ALX Final Project UpperSkill: is a user freindly platform decicated to students who want to upgrade their skills, upon first login, user is directed to pass a quizz to define their skills level, the result will analyzed using AI and recommand the best courses to continue grow skills.
-# UpperSkill
 
 UpperSkill is a portfolio project developed during the ALX Academy Software Engineering program. It is an educational platform designed to guide learners in becoming experts in their skills by recommending courses based on their skill level. The platform assesses a user's proficiency through an initial quiz and uses the results to recommend tailored courses.
 
