@@ -13,8 +13,7 @@ dist
 dist-ssr
 *.local
 .env
-src/requestQuestions.mjs
-src/Login/LoginCopy.jsx
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
