@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 .env
+src/requestQuestions.mjs
 
 # Editor directories and files
 .vscode/*
