@@ -78,7 +78,3 @@ PORT=<port_number>
 ## License
 This project is licensed under the ISC License. For more details, see the LICENSE file.
 
----
-Happy developing with UpperSkill Back-End!
-
-`
