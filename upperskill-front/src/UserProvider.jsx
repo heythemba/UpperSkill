@@ -26,9 +26,10 @@ export const UserStatus = createContext ();
           'Content-Type': 'application/json'
         }
       });
+      console.log(res);
       throw new Error('handling quiz went wrong');
     } catch (error) {
-      console.error(error);
+      
       toast.error(error.message);
     }
   }
@@ -38,13 +39,12 @@ export const UserStatus = createContext ();
    const [isLogged, setIsLogged] = useState();
   // useEffect is called to set isLogged to true if the user is already logged in
   useEffect(() => {
-    console.log("user is already logged in")
     // Check localStorage for login state
     const loggedIn = localStorage.getItem('isLogged');
     if (loggedIn === 'true') {
       setIsLogged(true);
     }
-  }, );
+  }, []);
 
   const handleLogin = () => {
     setIsLogged(true);

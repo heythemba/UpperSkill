@@ -13,6 +13,8 @@ const QuestionsList = () => {
   //state to store user answers
   const [userAnswers, setUserAnswers] = useState([]);
 
+
+
     // Fetch questions from OpenAI API
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -23,7 +25,7 @@ const QuestionsList = () => {
             { role: "system", content: "You are an IT Teacher." },
             {
               role: "user",
-              content: `Write 10 questions about IT, with 4 multiple choice answers in strict JSON format ONLY.
+              content: `Write 10 questions about these topics : Health and Personal Development, Language and Communication, Creative Skills, Business and Management, Technology and Programming, STEM (Science, Technology, Engineering, Mathematics), with 4 multiple choice answers in strict JSON format ONLY.
               Each question should have the following structure:
               {
                 "question": "What is 2 + 2?",
@@ -53,12 +55,14 @@ const QuestionsList = () => {
 
         setQuestionsData(questions);
       } catch (error) {
-       throw console.error("Failed to fetch questions:", error);
+        console.error("Failed to fetch questions:", error);
       }
     };
 
     fetchQuestions();
-  }, []);
+  }, [questionsData]);
+
+    // Function to handle user answers
 
 
 
@@ -69,12 +73,21 @@ const QuestionsList = () => {
     };
 
 
-    /*
-
+    
+    //Disabled ChatGPT Request because we should have a premium account to send multiple requests
     // Fetch Recommandation from OpenAI API
-    useEffect(() => {
+ /*
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
       const fetchAnalyse = async () => {
         try {
+        console.log("Waiting for 20 seconds before making the request...");
+  
+          // Wait for 20 seconds (20,000 milliseconds)
+            await delay(20000);
+
+          console.log("Sending the request...");
+  // Proceed with the fetch request
           const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             messages: [
@@ -82,7 +95,7 @@ const QuestionsList = () => {
               {
                 role: "user",
                 content: `Using These Questions: ${questionsData} and these answers: ${userAnswers}
-                Analyse the answers and return one recommandation for the user to be expert in one filed based on his answers, 
+                Analyse the answers and return one recommandation from these topics :Health and Personal Development, Language and Communication, Creative Skills, Business and Management, Technology and Programming, STEM (Science, Technology, Engineering, Mathematics) for the user to be expert in one filed based on his answers, 
                 Your Answer should be in strict JSON format ONLY.
                 },`
               },
@@ -102,15 +115,22 @@ const QuestionsList = () => {
   
           // Attempt to parse as JSON
           const analysedAnswer = JSON.parse(rawAnswer);
-  
+          
           // Log parsed JSON for debugging
-          console.log("Parsed JSON: ", analysedAnswer);
-  
+          console.log("Here is you Analysis !!!!!!!!!!!! ", analysedAnswer);
         } catch (error) {
          throw console.error("Failed to analyse user questions:", error);
         }
       };
-    }, ); */
+
+      useEffect(() => {
+        if (userAnswers) {
+          fetchAnalyse();
+        };
+
+      },[userAnswers]);// eslint-disable-line react-hooks/exhaustive-deps
+  
+      */ 
   
     const handleSubmit = () => {
           const userAnswersJson = JSON.stringify(userAnswers);
