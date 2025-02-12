@@ -1,6 +1,10 @@
 # UpperSkill
 
-UpperSkill is a portfolio project developed during the ALX Academy Software Engineering program. It is an educational platform designed to guide learners in becoming experts in their skills by recommending courses based on their skill level. The platform assesses a user's proficiency through an initial quiz and uses the results to recommend tailored courses.
+UpperSkill is an innovative platform designed for students and professionals aiming to transform their current skill sets into expert-level mastery.
+Upon their first login, users are guided through a comprehensive skill assessment quiz tailored to evaluate their current proficiency.
+Leveraging advanced AI algorithms, the platform analyzes the quiz results to generate personalized insights into the user's strengths and areas for improvement.
+Based on this analysis, UpperSkill recommends a curated selection of courses, resources, and learning pathways specifically designed to help users achieve their goals and elevate their skills to an expert level.
+Whether you're looking to advance in your career or excel academically, SkillElevate provides the tools and guidance to unlock your full potential.
 
 ## Features
 
