@@ -2,7 +2,7 @@ import "./LoginForm.css";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "../icons/Arrow-right";
 import { useForm } from "react-hook-form";
-import {toast, Toaster } from "react-hot-toast";
+import {toast } from "react-hot-toast";
 import { useContext } from 'react';
 import { UserStatus } from '../UserProvider.jsx';
 
@@ -53,11 +53,11 @@ const Login = () => {
               <div className="input-field">
                 <label htmlFor="username">Username:</label>
                 <input        
-                  type="username"
+                  type="text"
                   id="username"
                   placeholder="User Name"
                   {...register('username', 
-                    { required: 'Username e is required', 
+                    { required: 'Username is required', 
                       pattern: /^[a-z0-9._]+$/
                     })}
                 />
@@ -90,14 +90,10 @@ const Login = () => {
             </form>
           <div className='divider-login'></div>
           <div className='login-form-switch'>
-            <p>Don&apos;t have an account? <Link className="form-switch" to='/Signup'>Sign-Up</Link></p>
+            <p>Don&apos;t have an account? <Link className="form-switch" to='/Sign-Up'>Sign-Up</Link></p>
           </div>
         </div> 
         </div>
-        <Toaster
-                      position="top-center"
-                      reverseOrder={false}
-                      />
     </>
   )
 };

@@ -2,7 +2,7 @@ import CoursesCard from "./CoursesCard";
 import EnrolledCourseList from "./EnrolledCourseList";
 import './DashboardCourses.css';
 import { useEffect, useState } from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 const  DashboardCourses = () => {
 
@@ -30,11 +30,9 @@ const  DashboardCourses = () => {
          } 
          
          useEffect(() => {
-                 if (courseList) {
        fetchTeacherData();
-     }
-         
-         },[courseList]);
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+         },[]);
 
         return (
        <div className="courses-conatiner">
@@ -54,7 +52,6 @@ const  DashboardCourses = () => {
                                                  
          ))}
         </div>
-        <Toaster />
        </div>
         );
         }

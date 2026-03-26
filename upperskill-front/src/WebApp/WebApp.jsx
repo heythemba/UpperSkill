@@ -19,9 +19,9 @@ const WebApp = () => {
         
         <div className="dashboard">
         <Routes>
-          <Route path="Dash" element={<Dashboard /> } />
-          <Route path= "Courses" element={<AllCourses /> } />
-          <Route path= "Settings" element={ <Settings /> } />
+          <Route path="dash" element={<Dashboard /> } />
+          <Route path= "courses" element={<AllCourses /> } />
+          <Route path= "settings" element={ <Settings /> } />
           <Route path="*" element={<NotFoundPage link='/Dashboard/dash' /> } />
         </Routes>
         <Outlet />

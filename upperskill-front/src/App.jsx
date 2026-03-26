@@ -25,8 +25,7 @@ const  App = () => {
     if (isLogged){
       getUser();
     }
-    
-  }, );
+  }, [isLogged]);
   
   return (
     <>

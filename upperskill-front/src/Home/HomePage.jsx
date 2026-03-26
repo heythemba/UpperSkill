@@ -11,11 +11,12 @@ import { KeyValueSection } from '../kvp/kvp.jsx';
 import { BannerObj } from '../banner/BannerObj.jsx';
 import CtaButton from '../cta-btn/button.jsx';
 import './HomePage.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const HomePage = () => {
         const scrollPosition = useLocation();
+        const navigate = useNavigate();
 
         useEffect(() => {
             window.scrollTo(0, 0);
@@ -34,8 +35,8 @@ const HomePage = () => {
                 </div>
                         {/* Call To Action section */}
                         <div className="cta-landing">
-                        <CtaButton priority="primary" text="Get Started For Free" theme="Dark" onClick={() => (window.location.pathname = '/Sign-Up')} />
-                        <CtaButton priority="link" text="Learn more" onClick={() => (window.location.pathname = '/About')}/>
+                        <CtaButton priority="primary" text="Get Started For Free" theme="Dark" onClick={() => navigate('/Sign-Up')} />
+                        <CtaButton priority="link" text="Learn more" onClick={() => navigate('/About')}/>
                 </div>
         </div>
         <div className="banner">
@@ -55,7 +56,7 @@ const HomePage = () => {
                         <MvpFeature isSwapped = {true} title='Get AI-Driven Recommendations' illust={<TakeQuiz />} description='Our intelligent AI analyzes your quiz results to identify gaps in your knowledge. It then recommends a curated list of courses to help you achieve your learning goals effectively and efficiently.' />
                         <MvpFeature isSwapped = {false} title='Track Your Progress' illust={<Progress />} description='Access a dynamic dashboard that visualizes your progress, highlights your achievements, and keeps you motivated. Stay on track and celebrate every milestone on your way to mastery.' />
                 </div>
-                <CtaButton priority="primary"  theme="Dark" text="Start Your Journey For Free" onClick={() => (window.location.pathname = '/Sign-Up')} icon={<ArrowRight />}/>
+                <CtaButton priority="primary"  theme="Dark" text="Start Your Journey For Free" onClick={() => navigate('/Sign-Up')} icon={<ArrowRight />}/>
         </div>
         <KeyValueSection />
         </>

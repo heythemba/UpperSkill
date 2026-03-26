@@ -1,5 +1,5 @@
 import './AllCourses.css';
-import {toast, Toaster } from "react-hot-toast";
+import {toast } from "react-hot-toast";
 import { useEffect,useState } from 'react';
 import CoursesCard from './CoursesCard.jsx';
 
@@ -45,10 +45,6 @@ useEffect(() => {
                         </div>
                           
                         ))}
-                        <Toaster
-                      position="top-center"
-                      reverseOrder={false}
-                      />
                 </div>
         );
 }

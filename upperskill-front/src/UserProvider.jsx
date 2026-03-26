@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,6 +10,8 @@ export const UserStatus = createContext ();
 
 
  export const UserProvider = ({ children }) => {
+
+  const navigate = useNavigate();
 
   const [courseCreation, setCourseCreation] = useState(false);
   const handleCourseCreation = () => {
@@ -26,10 +29,11 @@ export const UserStatus = createContext ();
           'Content-Type': 'application/json'
         }
       });
-      console.log(res);
-      throw new Error('handling quiz went wrong');
+      if (!res.ok) {
+        throw new Error('Failed to submit quiz');
+      }
+      toast.success('Quiz submitted successfully');
     } catch (error) {
-      
       toast.error(error.message);
     }
   }
@@ -49,7 +53,7 @@ export const UserStatus = createContext ();
   const handleLogin = () => {
     setIsLogged(true);
     localStorage.setItem('isLogged', 'true');
-    window.location.pathname = '/Dashboard/dash';
+    navigate('/Dashboard/dash');
   };
 
   // Getting all the information about the logged in user
@@ -60,8 +64,9 @@ export const UserStatus = createContext ();
     try {
       const res = await fetch('/api/auth/me');
       if (res.status === 200) {
-        setUserData(await res.json());
-        localStorage.setItem('userData', userData);
+        const data = await res.json();
+        setUserData(data);
+        localStorage.setItem('userData', JSON.stringify(data));
       } else {
         throw new Error('Unauthorized access');
       }
@@ -83,11 +88,11 @@ export const UserStatus = createContext ();
                 });
                 if (res.ok === true) {
                         toast.success('Logged out successfully');
-                        window.location.pathname = '/login';
                         setIsLogged(false);
                         localStorage.setItem('isLogged', 'false');
-                        localStorage.setItem('userData', undefined);
+                        localStorage.removeItem('userData');
                         localStorage.removeItem('quizTaken');
+                        navigate('/Login');
                         
                 } else {
                   

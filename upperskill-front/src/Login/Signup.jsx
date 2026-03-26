@@ -2,7 +2,7 @@ import "./LoginForm.css";
 import { ArrowRight } from "../icons/Arrow-right";
 import { Link } from "react-router-dom";
 import { useForm , Controller } from "react-hook-form";
-import {toast, Toaster} from "react-hot-toast";
+import {toast } from "react-hot-toast";
 import { useContext } from 'react';
 import { UserStatus } from '../UserProvider.jsx';
 
@@ -62,8 +62,8 @@ const Signup = () => {
                       <div className="input-field">
                           <label htmlFor="fullName">Full Name:</label>
                           <input
-                            type="fullname"
-                            id="fullname"
+                            type="text"
+                            id="fullName"
                             placeholder="Full Name"
                             {...register('fullName',
                               { required: 'Full Name is required', 
@@ -94,7 +94,7 @@ const Signup = () => {
                         <div className="input-field">
                           <label htmlFor="username">Username :</label>
                           <input
-                            type="username"
+                            type="text"
                             id="username"
                             placeholder="Username"
                             {...register('username',
@@ -128,7 +128,7 @@ const Signup = () => {
                           <label htmlFor="confirmPassword">Confirm Password:</label>
                           <input
                             type="Password"
-                            id="password"
+                            id="confirmPassword"
                             placeholder="Confirm Password"
                             {...register('confirmPassword',
                               { required: 'Confirm password is required', 
@@ -172,10 +172,6 @@ const Signup = () => {
                       </div>
                     </div>
                     </div>
-                    <Toaster
-                      position="top-center"
-                      reverseOrder={false}
-                      />
                 </>
         
 )};

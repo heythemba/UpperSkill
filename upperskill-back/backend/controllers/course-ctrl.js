@@ -1,5 +1,4 @@
 import { v2 as cloudinary } from "cloudinary";
-import qs from "qs";
 
 import Course from "../models/course-model.js";
 import User from "../models/user-model.js";
@@ -65,7 +64,7 @@ export const deleteCourse = async (req, res) => {
 
     await Course.findByIdAndDelete(req.params.id);
 
-    res.status(200).json({ error: "Course deleted successfully" });
+    res.status(200).json({ message: "Course deleted successfully" });
   } catch (error) {
     console.log("Error in deleteCourse ", error);
     res.status(500).json({ error: "Internal server error" });
@@ -74,7 +73,7 @@ export const deleteCourse = async (req, res) => {
 //retrieves all courses from the database and sorts them by title in ascending order,
 //then sends the list of courses as a response to the client.
 export const getAllCourses = async (req, res) => {
-  const topic = qs.parse(req.query).topic;
+  const topic = req.query.topic;
   console.log(topic);
   try {
     if (topic) {
@@ -130,7 +129,7 @@ export const enrollToCourse = async (req, res) => {
       );
       await user.save();
 
-      res.status(200).json({ error: "Enrolled successfully" });
+      res.status(200).json({ message: "Enrolled successfully" });
     } else {
       return res
         .status(400)
@@ -183,7 +182,7 @@ export const teacherCourses = async (req, res) => {
 //This function is used to rocommend the list of courses based on the ai quiz data
 
 export const recommandation = async (req, res) => {
-  const topic = qs.parse(req.query).topic;
+  const topic = req.query.topic;
   const userId = req.user._id;
   try {
     let user = await User.findById(userId);

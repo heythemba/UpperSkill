@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form';
 import { ArrowRight } from 'react-feather';
-import { toast, Toaster} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { useContext } from 'react';
 import { UserStatus } from '../../UserProvider.jsx';
 import './CreateCourseForm.css';
@@ -54,7 +54,7 @@ const CreateCourseForm = () => {
                      <div className="input-field">
                          <label htmlFor="title">Course Title:</label>
                          <input
-                           type="title"
+                           type="text"
                            id="title"
                            placeholder="Course Title"
                            {...register('title',
@@ -70,7 +70,7 @@ const CreateCourseForm = () => {
                        <div className="input-field">
                          <label htmlFor="description">Description:</label>
                          <input
-                           type="description"
+                           type="text"
                            id="description"
                            placeholder="Description"
                            {...register('description',
@@ -83,7 +83,7 @@ const CreateCourseForm = () => {
                        <div className="input-field">
                          <label htmlFor="content">Content :</label>
                          <input
-                           type="content"
+                           type="text"
                            id="content"
                            placeholder="Content"
                            {...register('content',
@@ -115,10 +115,6 @@ const CreateCourseForm = () => {
                      </form>
                    </div>
                    </div>
-                   <Toaster
-                     position="top-center"
-                     reverseOrder={false}
-                     />
                </>
         )
 }

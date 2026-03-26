@@ -16,7 +16,7 @@ const CoursesCrud = ({
                         </div>
                         <div className="cta-crud">
                                 <button className="secondary-btn" onClick={() => console.log('Edit button')} >{<Edit />} Edit</button>
-                                <button className="warning-btn" onClick={() => console.log('Delet button')} >{<Delete />}Delete</button>
+                                <button className="warning-btn" onClick={() => console.log('Delete button')} >{<Delete />}Delete</button>
                         </div>
                 </div>
         )

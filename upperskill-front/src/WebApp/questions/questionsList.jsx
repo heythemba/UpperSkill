@@ -60,7 +60,8 @@ const QuestionsList = () => {
     };
 
     fetchQuestions();
-  }, [questionsData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
     // Function to handle user answers
 

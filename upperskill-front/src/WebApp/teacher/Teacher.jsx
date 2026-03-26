@@ -4,7 +4,7 @@ import { Plus } from 'react-feather';
 import { useContext,useEffect } from 'react';
 import CreateCourseForm from './CreateCourseForm';
 import {UserStatus} from '../../UserProvider.jsx';
-import { Toaster,toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { useState } from 'react';
 
 const Teacher = () => {
@@ -51,7 +51,6 @@ const Teacher = () => {
                         {courseCreation && <CreateCourseForm />}
                         </div>
                         <div className="heading-divider"></div>
-                        <Toaster />
                 </div>
                  {teacherCourseList.map((courseCreated, index) => (
                                         <div className="course-card-item" key={index} >

@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import { v2 as cloudinary } from "cloudinary";
 
 import authRoutes from "./routes/auth-route.js";
@@ -21,6 +22,11 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+app.use(cors({
+	origin: "http://localhost:5173",
+	credentials: true,
+}));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -28,8 +34,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cookieParser());
-
-console.log(process.env.mongosrv);
 
 
 app.use("/api/auth", authRoutes);

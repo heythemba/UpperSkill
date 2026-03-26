@@ -1,6 +1,7 @@
 import './sideMenu.css';
 import logo from "../../assets/white-logo192.png";
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {DashboardIcon} from '../../icons/DashboardIcon.jsx';
 import {CoursesIcon} from '../../icons/CoursesIcon.jsx';
 import {SettingIcon} from '../../icons/SettingIcon.jsx';
@@ -14,12 +15,14 @@ import { UserStatus } from '../../UserProvider.jsx';
 const SideMenu = () => {
 
       const { handleLogout } = useContext(UserStatus);
+      const navigate = useNavigate();
+      const location = useLocation();
         
-        const [activeButton, setActiveButton] = useState(window.location.pathname);
+        const [activeButton, setActiveButton] = useState(location.pathname);
 
         const handleButtonClick = (path) => {
           setActiveButton(path);
-          window.location.pathname = path;
+          navigate(path);
         };
         return (
                 

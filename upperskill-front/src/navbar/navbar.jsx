@@ -3,7 +3,7 @@ import "./navbar.css";
 import logo from "../assets/logo192.png";
 import { Avatar } from "../icons/avatar.jsx";
 import CtaButton from "../cta-btn/button.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Settings, User, LogOut } from 'react-feather';
 import { useContext } from 'react';
@@ -18,6 +18,7 @@ export const NavBar = ({
     
 
    const { handleLogout } = useContext(UserStatus);
+   const navigate = useNavigate();
 
     const [profileMenu, setProfileMenu] = useState(false);
     const handleProfileMenu = () => { 
@@ -47,7 +48,7 @@ export const NavBar = ({
                         
                         
                         <CtaButton className="cta-btn" priority ="primary" text="Get Started For Free" theme="Dark"
-                        onClick={()=> (window.location = "/Sign-Up")} />
+                        onClick={()=> navigate("/Sign-Up")} />
                     </div>
                 </>
             )}
